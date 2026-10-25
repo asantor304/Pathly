@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pathly — counselor dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F6F7F9}
+a{color:#0E6E66}a:hover{color:#0A4F49}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<noscript>This prototype needs JavaScript turned on.</noscript>
+
+<script type="text/x-template" id="dc-template">
+<div style="font-family: Inter, system-ui, sans-serif; color: #172033; background: #F6F7F9; width: 100%; min-height: 100vh">
+
+<header style="background: #FFFFFF; border-bottom: 1px solid #E3E6EB">
+<div style="padding: 14px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px">
+<div style="display: flex; align-items: center; gap: 14px; flex-wrap: wrap">
+<a href="index.html" style="display: flex; align-items: center; gap: 8px; text-decoration: none; color: #172033">
+<svg width="26" height="26" viewBox="0 0 28 28" aria-hidden="true"><rect width="28" height="28" rx="8" fill="#0E6E66"></rect><path d="M8 20c0-6 4-6 6-6s6 0 6-6" stroke="#FFFFFF" stroke-width="2.4" fill="none" stroke-linecap="round"></path><circle cx="20" cy="8" r="2.2" fill="#FFFFFF"></circle></svg>
+<span style="font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 19px">Pathly</span>
+</a>
+<span style="font-size: 14px; font-weight: 600; color: #FFFFFF; background: {{schoolColor}}; padding: 6px 12px; border-radius: 8px">[Your High School] · Counselor</span>
+</div>
+<div style="display: flex; align-items: center; gap: 12px">
+<a href="student.html" style="font-size: 14px; color: #5B6474">Switch to student view</a>
+<span style="width: 40px; height: 40px; border-radius: 999px; background: #E3F1EF; color: #0E6E66; display: flex; align-items: center; justify-content: center; font-weight: 700">DA</span>
+</div>
+</div>
+</header>
+
+<div style="display: flex; flex-wrap: wrap; gap: 24px; padding: 24px; max-width: 1400px; margin: 0 auto">
+
+<nav aria-label="Counselor" style="flex: 1 1 210px; max-width: 260px; display: flex; flex-direction: column; gap: 4px">
+<a href="#" style="padding: 11px 14px; border-radius: 10px; background: #E3F1EF; color: #0A4F49; font-weight: 600; text-decoration: none">Caseload</a>
+<a href="essay.html" style="padding: 11px 14px; border-radius: 10px; color: #3B4555; text-decoration: none">Essay reviews</a>
+<a href="#" style="padding: 11px 14px; border-radius: 10px; color: #3B4555; text-decoration: none">Meetings</a>
+<a href="recommendations.html" style="padding: 11px 14px; border-radius: 10px; color: #3B4555; text-decoration: none">Recommendations</a>
+<a href="resources.html" style="padding: 11px 14px; border-radius: 10px; color: #3B4555; text-decoration: none">Resources</a>
+<a href="#" style="padding: 11px 14px; border-radius: 10px; color: #3B4555; text-decoration: none">Reports</a>
+<a href="#" style="padding: 11px 14px; border-radius: 10px; color: #3B4555; text-decoration: none">School settings</a>
+</nav>
+
+<main style="flex: 999 1 560px; min-width: 0; display: flex; flex-direction: column; gap: 20px">
+
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 12px">
+<div style="display: flex; flex-direction: column; gap: 4px">
+<h1 style="margin: 0; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 30px; letter-spacing: -0.02em">Welcome back, Ms. Alvarez</h1>
+<span style="color: #5B6474">Class of 2027 and 2028 caseload · Early Action deadline in 12 days</span>
+</div>
+<button type="button" style="font: inherit; font-weight: 600; font-size: 14px; background: #0E6E66; color: #FFFFFF; border: 0; padding: 12px 16px; border-radius: 10px; cursor: pointer; min-height: 44px">Message a group</button>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px">
+<div style="background: #FFFFFF; border: 1px solid #E3E6EB; border-radius: 14px; padding: 20px; display: flex; flex-direction: column; gap: 6px"><span style="font-size: 14px; color: #5B6474">Students on caseload</span><span style="font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 32px">[N]</span><span style="font-size: 13px; color: #5B6474">Juniors and seniors</span></div>
+<div style="background: #FFFFFF; border: 1px solid #E3E6EB; border-radius: 14px; padding: 20px; display: flex; flex-direction: column; gap: 6px"><span style="font-size: 14px; color: #5B6474">Essays awaiting review</span><span style="font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 32px">{{reviewCount}}</span><a href="essay.html" style="font-size: 13px; font-weight: 600">Open review queue</a></div>
+<div style="background: #FFFFFF; border: 1px solid #E3E6EB; border-radius: 14px; padding: 20px; display: flex; flex-direction: column; gap: 6px"><span style="font-size: 14px; color: #5B6474">Falling behind</span><span style="font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 32px; color: #B42318">{{behindCount}}</span><span style="font-size: 13px; color: #5B6474">Missing a step due within 14 days</span></div>
+<div style="background: #FFFFFF; border: 1px solid #E3E6EB; border-radius: 14px; padding: 20px; display: flex; flex-direction: column; gap: 6px"><span style="font-size: 14px; color: #5B6474">Meetings this week</span><span style="font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 32px">6</span><span style="font-size: 13px; color: #5B6474">Next: Jordan R., Thu 2:15</span></div>
+</div>
+
+<section aria-labelledby="st-h" style="background: #FFFFFF; border: 1px solid #E3E6EB; border-radius: 16px; padding: 24px; display: flex; flex-direction: column; gap: 14px">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px">
+<h2 id="st-h" style="margin: 0; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 19px">Students</h2>
+<div role="group" aria-label="Filter students" style="display: flex; flex-wrap: wrap; gap: 8px">
+<sc-for list="{{ filters }}" as="f" hint-placeholder-count="4">
+<button type="button" aria-pressed="{{ f.pressed }}" onClick="{{ f.pick }}" style="{{ f.style }}">{{ f.label }}</button>
+</sc-for>
+</div>
+</div>
+<div style="overflow-x: auto">
+<table style="width: 100%; border-collapse: collapse; font-size: 15px; min-width: 760px">
+<thead><tr style="text-align: left; color: #5B6474; font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em"><th style="padding: 10px 8px; font-weight: 600">Student</th><th style="padding: 10px 8px; font-weight: 600">Grade</th><th style="padding: 10px 8px; font-weight: 600">Colleges</th><th style="padding: 10px 8px; font-weight: 600">Next deadline</th><th style="padding: 10px 8px; font-weight: 600">What's missing</th><th style="padding: 10px 8px; font-weight: 600">Status</th></tr></thead>
+<tbody>
+<sc-for list="{{ rows }}" as="s" hint-placeholder-count="6">
+<tr style="border-top: 1px solid #EEF0F3"><td style="padding: 14px 8px; font-weight: 600">{{ s.name }}</td><td style="padding: 14px 8px; color: #3B4555">{{ s.grade }}</td><td style="padding: 14px 8px; color: #3B4555">{{ s.colleges }}</td><td style="padding: 14px 8px; color: #3B4555">{{ s.next }}</td><td style="padding: 14px 8px; color: #3B4555">{{ s.missing }}</td><td style="padding: 14px 8px"><span style="{{ s.pillStyle }}">{{ s.status }}</span></td></tr>
+</sc-for>
+</tbody>
+</table>
+</div>
+<p style="margin: 0; font-size: 13px; color: #5B6474">Sample students for this draft.</p>
+</section>
+
+<div style="display: flex; flex-wrap: wrap; gap: 20px">
+<section aria-labelledby="rq-h" style="flex: 3 1 400px; min-width: 0; background: #FFFFFF; border: 1px solid #E3E6EB; border-radius: 16px; padding: 24px; display: flex; flex-direction: column; gap: 6px">
+<h2 id="rq-h" style="margin: 0 0 8px; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 19px">Essay review queue</h2>
+<sc-for list="{{ queue }}" as="q" hint-placeholder-count="4">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; padding: 12px 0; border-top: 1px solid #EEF0F3">
+<div style="display: flex; flex-direction: column; gap: 2px; min-width: 0"><span style="font-weight: 600">{{ q.student }} · {{ q.essay }}</span><span style="font-size: 14px; color: #5B6474">{{ q.meta }}</span></div>
+<a href="essay.html" style="font-weight: 600; font-size: 14px; color: #0E6E66; text-decoration: none; border: 1px solid #0E6E66; padding: 10px 14px; border-radius: 10px">Review</a>
+</div>
+</sc-for>
+</section>
+
+<section id="resources" aria-labelledby="rs-h" style="flex: 2 1 300px; min-width: 0; background: #FFFFFF; border: 1px solid #E3E6EB; border-radius: 16px; padding: 24px; display: flex; flex-direction: column; gap: 10px">
+<h2 id="rs-h" style="margin: 0 0 4px; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 19px">Shared resources</h2>
+<a href="resources.html" style="padding: 12px 0; border-top: 1px solid #EEF0F3; display: flex; flex-direction: column; gap: 2px; text-decoration: none; color: #172033"><span style="font-weight: 600">Early Action vs. Early Decision</span><span style="font-size: 14px; color: #5B6474">Guide · shared with all seniors</span></a>
+<a href="resources.html" style="padding: 12px 0; border-top: 1px solid #EEF0F3; display: flex; flex-direction: column; gap: 2px; text-decoration: none; color: #172033"><span style="font-weight: 600">The FAFSA, step by step (2027–28)</span><span style="font-size: 14px; color: #5B6474">Guide · shared with seniors and families</span></a>
+<a href="resources.html" style="padding: 12px 0; border-top: 1px solid #EEF0F3; display: flex; flex-direction: column; gap: 2px; text-decoration: none; color: #172033"><span style="font-weight: 600">How to structure your college essay</span><span style="font-size: 14px; color: #5B6474">Guide · shared with all seniors</span></a>
+<a href="resources.html" style="padding: 12px 0; border-top: 1px solid #EEF0F3; display: flex; flex-direction: column; gap: 2px; text-decoration: none; color: #172033"><span style="font-weight: 600">Finding (and winning) scholarships</span><span style="font-size: 14px; color: #5B6474">Guide · shared with juniors and seniors</span></a>
+<a href="resources.html" style="padding: 12px 0; border-top: 1px solid #EEF0F3; display: flex; flex-direction: column; gap: 2px; text-decoration: none; color: #172033"><span style="font-weight: 600">CSS Profile basics</span><span style="font-size: 14px; color: #5B6474">Guide · shared with seniors and families</span></a>
+<div style="padding: 12px 0; border-top: 1px solid #EEF0F3; display: flex; flex-direction: column; gap: 2px"><span style="font-weight: 600">Brag sheet template</span><span style="font-size: 14px; color: #5B6474">Template · shared with juniors</span></div>
+<a href="resources.html" style="font: inherit; font-weight: 600; font-size: 14px; margin-top: 6px; background: #F6F7F9; color: #172033; border: 1px dashed #C9D2DC; padding: 12px; border-radius: 10px; text-align: center; text-decoration: none">Open resource library (10 guides)</a>
+</section>
+</div>
+
+</main>
+</div>
+</div>
+</script>
+
+<script type="application/json" id="dc-props">{"schoolColor":{"editor":"color","default":"#7A1F2B","options":["#7A1F2B","#1F3A7A","#2F5D2A","#4A2A6B"]},"$preview":{"width":1440,"height":1400}}</script>
+<script src="runtime.js"></script>
+<script>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { filter: 'all' };
+  }
+  pill(kind) {
+    const map = {
+      ok: 'background:#E6F4EA;color:#1E6B3A',
+      warn: 'background:#FDF1E4;color:#9A4A06',
+      bad: 'background:#FDECEA;color:#B42318',
+      info: 'background:#E3F1EF;color:#0A4F49'
+    };
+    return map[kind] + ';font-size:13px;font-weight:600;padding:4px 10px;border-radius:999px;white-space:nowrap';
+  }
+  renderVals() {
+    const filter = (this.state && this.state.filter) || 'all';
+    const students = [
+      { name: 'Sam Okafor', grade: '12', colleges: '3', next: 'Nov 1 · EA', missing: 'No essay draft yet', kind: 'bad' },
+      { name: 'Priya Natarajan', grade: '12', colleges: '8', next: 'Nov 1 · ED', missing: '1 recommendation', kind: 'warn' },
+      { name: 'Jordan Rivera', grade: '12', colleges: '7', next: 'Nov 1 · EA', missing: 'Essay revisions', kind: 'info' },
+      { name: 'Lucas Ferreira', grade: '12', colleges: '5', next: 'Nov 15 · EA', missing: 'Activities resume', kind: 'warn' },
+      { name: 'Aisha Rahman', grade: '12', colleges: '6', next: 'Jan 1 · RD', missing: '—', kind: 'ok' },
+      { name: 'Mei Lin', grade: '12', colleges: '0', next: 'No list yet', missing: 'College list, meeting', kind: 'bad' },
+      { name: 'Ethan Brooks', grade: '11', colleges: '2', next: 'Mar 14 · SAT', missing: 'Brag sheet', kind: 'ok' }
+    ];
+    const statusLabel = { bad: 'Falling behind', warn: 'Needs attention', info: 'Ready to review', ok: 'On track' };
+    const rows = students
+      .filter((s) => filter === 'all' || s.kind === filter)
+      .map((s) => Object.assign({}, s, { status: statusLabel[s.kind], pillStyle: this.pill(s.kind) }));
+    const defs = [
+      { id: 'all', label: 'All' }, { id: 'bad', label: 'Falling behind' },
+      { id: 'warn', label: 'Needs attention' }, { id: 'ok', label: 'On track' }
+    ];
+    const filters = defs.map((d) => {
+      const on = d.id === filter;
+      return {
+        label: d.label, pressed: on ? 'true' : 'false',
+        pick: () => this.setState({ filter: d.id }),
+        style: 'font:inherit;font-size:14px;font-weight:600;min-height:44px;padding:8px 14px;border-radius:999px;cursor:pointer;' + (on ? 'background:#172033;color:#FFFFFF;border:1px solid #172033' : 'background:#FFFFFF;color:#3B4555;border:1px solid #C9D2DC')
+      };
+    });
+    const queue = [
+      { student: 'Jordan Rivera', essay: 'Personal essay, draft 2', meta: 'Submitted yesterday · EA due Nov 1' },
+      { student: 'Priya Natarajan', essay: '“Why us” supplement', meta: 'Submitted 2 days ago · ED due Nov 1' },
+      { student: 'Lucas Ferreira', essay: 'Personal essay, draft 1', meta: 'Submitted 4 days ago · EA due Nov 15' },
+      { student: 'Aisha Rahman', essay: 'Scholarship essay', meta: 'Submitted 5 days ago · due Feb 1' }
+    ];
+    return {
+      schoolColor: this.props.schoolColor ?? '#7A1F2B',
+      filters: filters, rows: rows, queue: queue,
+      reviewCount: queue.length,
+      behindCount: students.filter((s) => s.kind === 'bad').length
+    };
+  }
+}
+</script>
+</body>
+</html>

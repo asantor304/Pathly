@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pathly — essay feedback</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;family=Source+Serif+4:wght@400;600&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F6F7F9}
+a{color:#0E6E66}a:hover{color:#0A4F49}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<noscript>This prototype needs JavaScript turned on.</noscript>
+
+<script type="text/x-template" id="dc-template">
+<div style="font-family: Inter, system-ui, sans-serif; color: #172033; background: #F6F7F9; width: 100%; min-height: 100vh">
+
+<header style="background: #FFFFFF; border-bottom: 1px solid #E3E6EB">
+<div style="padding: 14px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px">
+<div style="display: flex; align-items: center; gap: 14px; flex-wrap: wrap">
+<a href="student.html" style="display: flex; align-items: center; gap: 8px; text-decoration: none; color: #172033">
+<svg width="26" height="26" viewBox="0 0 28 28" aria-hidden="true"><rect width="28" height="28" rx="8" fill="#0E6E66"></rect><path d="M8 20c0-6 4-6 6-6s6 0 6-6" stroke="#FFFFFF" stroke-width="2.4" fill="none" stroke-linecap="round"></path><circle cx="20" cy="8" r="2.2" fill="#FFFFFF"></circle></svg>
+<span style="font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 19px">Pathly</span>
+</a>
+<span style="color: #9AA4B2" aria-hidden="true">/</span>
+<span style="font-weight: 600">Jordan Rivera · Personal essay</span>
+</div>
+<div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap">
+<a href="student.html" style="font-size: 14px; color: #5B6474">Student dashboard</a>
+<a href="counselor.html" style="font-size: 14px; color: #5B6474">Counselor dashboard</a>
+</div>
+</div>
+</header>
+
+<div style="max-width: 1320px; margin: 0 auto; padding: 24px; display: flex; flex-direction: column; gap: 20px">
+
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 14px">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<h1 style="margin: 0; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 28px; letter-spacing: -0.02em">Common App personal essay</h1>
+<div style="display: flex; flex-wrap: wrap; gap: 10px; align-items: center; font-size: 14px; color: #5B6474">
+<span>Draft 2 of 2 · 412 / 650 words · Used for UMass Amherst, Northeastern</span>
+<span style="{{ statusStyle }}">{{ statusLabel }}</span>
+</div>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 10px">
+<button type="button" onClick="{{ requestRevision }}" style="font: inherit; font-weight: 600; font-size: 15px; background: #FFFFFF; color: #172033; border: 1px solid #C9D2DC; padding: 12px 16px; border-radius: 10px; cursor: pointer; min-height: 44px">Request another revision</button>
+<button type="button" onClick="{{ approve }}" style="font: inherit; font-weight: 600; font-size: 15px; background: #0E6E66; color: #FFFFFF; border: 0; padding: 12px 18px; border-radius: 10px; cursor: pointer; min-height: 44px">Approve essay</button>
+</div>
+</div>
+
+<div style="display: flex; flex-wrap: wrap; gap: 20px; align-items: flex-start">
+
+<article style="flex: 999 1 560px; min-width: 0; background: #FFFFFF; border: 1px solid #E3E6EB; border-radius: 16px; padding: 48px 56px; font-family: 'Source Serif 4', Georgia, serif; font-size: 19px; line-height: 1.75; color: #172033; display: flex; flex-direction: column; gap: 18px">
+<p style="margin: 0; font-size: 13px; font-family: Inter, sans-serif; color: #5B6474">Sample draft written for this mockup</p>
+<p style="margin: 0"><mark style="background: #FDF1E4; border-bottom: 2px solid #C2650A; color: inherit; padding: 1px 0">Ever since I was young, I have always been passionate about helping people.</mark> The first time I really understood what that meant was the summer my grandmother moved in with us and I became the person who translated her doctor's appointments.</p>
+<p style="margin: 0">Every Tuesday we took the 7:40 bus to the clinic. She held the folder of papers; I held the questions. At first I translated word for word, and the doctor's sentences came out of my mouth sounding cold. By August I had learned to slow down, to repeat the part about the medicine twice, and to wait while she decided whether she was ready to ask her own question.</p>
+<p style="margin: 0"><mark style="background: #E3F1EF; border-bottom: 2px solid #0E6E66; color: inherit; padding: 1px 0">I started a notebook of medical words in both languages, and by the end of the summer it had 140 entries and a coffee stain on the cover.</mark> Other families in our building began knocking on our door with their own letters from the hospital.</p>
+<p style="margin: 0">That notebook is why I want to study public health. <mark style="background: #FDF1E4; border-bottom: 2px solid #C2650A; color: inherit; padding: 1px 0">In conclusion, this experience taught me many valuable lessons that I will carry with me forever.</mark></p>
+</article>
+
+<aside aria-label="Comments" style="flex: 1 1 320px; min-width: 0; display: flex; flex-direction: column; gap: 14px">
+<div style="background: #FFFFFF; border: 1px solid #E3E6EB; border-radius: 14px; padding: 18px; display: flex; flex-direction: column; gap: 8px">
+<div style="display: flex; justify-content: space-between; align-items: center"><span style="font-weight: 600">Ms. Alvarez</span><span style="font-size: 13px; color: #5B6474">Opening line</span></div>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: #3B4555">Admissions readers see this sentence a lot. Try starting on the bus at 7:40 instead — drop us straight into the scene.</p>
+</div>
+<div style="background: #FFFFFF; border: 1px solid #E3E6EB; border-radius: 14px; padding: 18px; display: flex; flex-direction: column; gap: 8px">
+<div style="display: flex; justify-content: space-between; align-items: center"><span style="font-weight: 600">Ms. Alvarez</span><span style="font-size: 13px; color: #1E6B3A">Strength</span></div>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: #3B4555">This is the heart of the essay. The coffee stain is a great detail — give the notebook more room.</p>
+</div>
+<div style="background: #FFFFFF; border: 1px solid #E3E6EB; border-radius: 14px; padding: 18px; display: flex; flex-direction: column; gap: 8px">
+<div style="display: flex; justify-content: space-between; align-items: center"><span style="font-weight: 600">Ms. Alvarez</span><span style="font-size: 13px; color: #5B6474">Ending</span></div>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: #3B4555">You have about 240 words left. Show what you'd do with public health instead of summarizing the lessons.</p>
+</div>
+<div style="background: #FFFFFF; border: 1px solid #E3E6EB; border-radius: 14px; padding: 18px; display: flex; flex-direction: column; gap: 10px">
+<label for="reply" style="font-weight: 600; font-size: 14px">Add a comment</label>
+<textarea id="reply" rows="3" style="font: inherit; font-size: 15px; padding: 10px 12px; border: 1px solid #C9D2DC; border-radius: 10px; resize: vertical"></textarea>
+<button type="button" style="font: inherit; font-weight: 600; font-size: 14px; align-self: flex-end; background: #172033; color: #FFFFFF; border: 0; padding: 10px 16px; border-radius: 10px; cursor: pointer; min-height: 44px">Post</button>
+</div>
+<div style="background: #FFFFFF; border: 1px solid #E3E6EB; border-radius: 14px; padding: 18px; display: flex; flex-direction: column; gap: 8px; font-size: 14px">
+<span style="font-weight: 600; font-size: 15px">Version history</span>
+<div style="display: flex; justify-content: space-between; color: #3B4555"><span>Draft 2 · submitted</span><span>Oct 19</span></div>
+<div style="display: flex; justify-content: space-between; color: #3B4555"><span>Draft 1 · 6 comments</span><span>Oct 6</span></div>
+<div style="display: flex; justify-content: space-between; color: #3B4555"><span>Brainstorm notes</span><span>Sep 22</span></div>
+</div>
+</aside>
+
+</div>
+</div>
+</div>
+</script>
+
+<script type="application/json" id="dc-props">{"$preview":{"width":1440,"height":1150}}</script>
+<script src="runtime.js"></script>
+<script>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { status: 'review' };
+  }
+  renderVals() {
+    const s = (this.state && this.state.status) || 'review';
+    const looks = {
+      review: ['Awaiting counselor review', 'background:#FDF1E4;color:#9A4A06'],
+      approved: ['Approved — ready for Common App', 'background:#E6F4EA;color:#1E6B3A'],
+      revise: ['Revision requested', 'background:#FDECEA;color:#B42318']
+    };
+    return {
+      statusLabel: looks[s][0],
+      statusStyle: looks[s][1] + ';font-size:13px;font-weight:600;padding:4px 10px;border-radius:999px',
+      approve: () => this.setState({ status: 'approved' }),
+      requestRevision: () => this.setState({ status: 'revise' })
+    };
+  }
+}
+</script>
+</body>
+</html>

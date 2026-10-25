@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pathly — website</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FFFFFF}
+a{color:#0E6E66}a:hover{color:#0A4F49}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<noscript>This prototype needs JavaScript turned on.</noscript>
+
+<script type="text/x-template" id="dc-template">
+<div style="font-family: Inter, system-ui, sans-serif; color: #172033; background: #FFFFFF; width: 100%">
+
+<header style="border-bottom: 1px solid #E3E6EB; background: #FFFFFF">
+<div style="max-width: 1200px; margin: 0 auto; padding: 18px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px">
+<a href="#top" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: #172033">
+<svg width="30" height="30" viewBox="0 0 28 28" aria-hidden="true"><rect width="28" height="28" rx="8" fill="#0E6E66"></rect><path d="M8 20c0-6 4-6 6-6s6 0 6-6" stroke="#FFFFFF" stroke-width="2.4" fill="none" stroke-linecap="round"></path><circle cx="20" cy="8" r="2.2" fill="#FFFFFF"></circle></svg>
+<span style="font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 22px; letter-spacing: -0.02em">Pathly</span>
+</a>
+<nav aria-label="Main" style="display: flex; flex-wrap: wrap; align-items: center; gap: 24px; font-size: 15px; font-weight: 500">
+<a href="#students" style="color: #3B4555; text-decoration: none">For students</a>
+<a href="#counselors" style="color: #3B4555; text-decoration: none">For counselors</a>
+<a href="#privacy" style="color: #3B4555; text-decoration: none">Privacy</a>
+<a href="#pricing" style="color: #3B4555; text-decoration: none">Pricing</a>
+<a href="signin.html" style="color: #3B4555; text-decoration: none">Sign in</a>
+<a href="#pilot" style="background: #0E6E66; color: #FFFFFF; text-decoration: none; padding: 12px 18px; border-radius: 10px; font-weight: 600">Request a pilot</a>
+</nav>
+</div>
+</header>
+
+<section id="top" style="background: #F2F7F6">
+<div style="max-width: 1200px; margin: 0 auto; padding: 88px 24px 96px; display: flex; flex-wrap: wrap; gap: 56px; align-items: center">
+<div style="flex: 1 1 460px; min-width: 0; display: flex; flex-direction: column; gap: 24px">
+<p style="margin: 0; font-size: 14px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #0E6E66">College advising, built for your high school</p>
+<h1 style="margin: 0; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 56px; line-height: 1.05; letter-spacing: -0.03em">Applying to college will always be complicated. Managing it doesn't have to be.</h1>
+<p style="margin: 0; font-size: 19px; line-height: 1.6; color: #3B4555; max-width: 560px">Pathly gives every junior and senior one place to build a college list, track deadlines, upload essays and documents, and work directly with the counselor they already have.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 12px">
+<a href="student.html" style="background: #0E6E66; color: #FFFFFF; text-decoration: none; padding: 15px 22px; border-radius: 10px; font-weight: 600; font-size: 16px">See the student view</a>
+<a href="counselor.html" style="background: #FFFFFF; color: #172033; text-decoration: none; padding: 15px 22px; border-radius: 10px; font-weight: 600; font-size: 16px; border: 1px solid #C9D2DC">See the counselor view</a>
+</div>
+<p style="margin: 0; font-size: 15px; color: #5B6474">We don't replace Common App — we get students ready for it.</p>
+</div>
+<div style="flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 14px">
+<div style="background: #FFFFFF; border: 1px solid #E3E6EB; border-radius: 16px; padding: 22px; box-shadow: 0 12px 32px rgba(20,33,61,0.08); display: flex; flex-direction: column; gap: 14px">
+<div style="display: flex; justify-content: space-between; align-items: center"><span style="font-weight: 600">Your next step</span><span style="font-size: 13px; color: #9A4A06; background: #FDF1E4; padding: 4px 10px; border-radius: 999px; font-weight: 600">Due in 12 days</span></div>
+<p style="margin: 0; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 20px">Revise your personal essay</p>
+<p style="margin: 0; font-size: 15px; color: #5B6474; line-height: 1.5">Your counselor left 3 comments on draft 2. Early Action applications are due Nov 1.</p>
+<div style="height: 8px; background: #E3E6EB; border-radius: 999px"><div style="width: 62%; height: 8px; background: #0E6E66; border-radius: 999px"></div></div>
+<span style="font-size: 13px; color: #5B6474">Application readiness · 62%</span>
+</div>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px">
+<div style="background: #FFFFFF; border: 1px solid #E3E6EB; border-radius: 16px; padding: 18px; display: flex; flex-direction: column; gap: 6px"><span style="font-size: 13px; color: #5B6474">College list</span><span style="font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 26px">7 schools</span><span style="font-size: 13px; color: #1E6B3A">2 applications in progress</span></div>
+<div style="background: #FFFFFF; border: 1px solid #E3E6EB; border-radius: 16px; padding: 18px; display: flex; flex-direction: column; gap: 6px"><span style="font-size: 13px; color: #5B6474">Next meeting</span><span style="font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 26px">Thu 2:15</span><span style="font-size: 13px; color: #5B6474">with your counselor</span></div>
+</div>
+</div>
+</div>
+</section>
+
+<section style="max-width: 1200px; margin: 0 auto; padding: 96px 24px 40px; display: flex; flex-direction: column; gap: 36px">
+<div style="display: flex; flex-direction: column; gap: 14px; max-width: 760px">
+<h2 style="margin: 0; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 40px; letter-spacing: -0.02em; line-height: 1.1">The information exists. It's just scattered everywhere.</h2>
+<p style="margin: 0; font-size: 18px; line-height: 1.6; color: #3B4555">Students juggle deadlines in one app, essays in another and counselor emails in a third. Counselors supporting hundreds of students can't easily see who is falling behind. First-generation, international and transfer students feel it most.</p>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px">
+<div style="border: 1px dashed #C9D2DC; border-radius: 12px; padding: 18px; font-weight: 500; color: #3B4555">Deadlines in a calendar</div>
+<div style="border: 1px dashed #C9D2DC; border-radius: 12px; padding: 18px; font-weight: 500; color: #3B4555">Essays in Google Docs</div>
+<div style="border: 1px dashed #C9D2DC; border-radius: 12px; padding: 18px; font-weight: 500; color: #3B4555">College list in a spreadsheet</div>
+<div style="border: 1px dashed #C9D2DC; border-radius: 12px; padding: 18px; font-weight: 500; color: #3B4555">Counselor feedback in email</div>
+<div style="border: 1px dashed #C9D2DC; border-radius: 12px; padding: 18px; font-weight: 500; color: #3B4555">Financial aid in five portals</div>
+<div style="border: 1px dashed #C9D2DC; border-radius: 12px; padding: 18px; font-weight: 500; color: #3B4555">Applications in Common App</div>
+</div>
+<div style="background: #172033; color: #FFFFFF; border-radius: 18px; padding: 32px; display: flex; flex-wrap: wrap; gap: 20px; align-items: center; justify-content: space-between">
+<p style="margin: 0; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 26px; line-height: 1.3; flex: 1 1 420px">Common App is where you apply. Pathly helps you figure out how to get there.</p>
+<a href="student.html" style="color: #FFFFFF; font-weight: 600; text-decoration: underline">Walk through a student's dashboard</a>
+</div>
+</section>
+
+<section id="students" style="max-width: 1200px; margin: 0 auto; padding: 72px 24px; display: flex; flex-wrap: wrap; gap: 48px">
+<div style="flex: 1 1 340px; min-width: 0; display: flex; flex-direction: column; gap: 14px">
+<p style="margin: 0; font-size: 14px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #0E6E66">For students</p>
+<h2 style="margin: 0; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 34px; letter-spacing: -0.02em; line-height: 1.15">One dashboard that tells you what to do next — and why.</h2>
+<p style="margin: 0; font-size: 17px; line-height: 1.6; color: #3B4555">Every step comes with a plain-language explanation, so students who are new to admissions know not just what to do, but why it matters.</p>
+</div>
+<div style="flex: 2 1 560px; min-width: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px">
+<div style="background: #F6F7F9; border-radius: 14px; padding: 22px; display: flex; flex-direction: column; gap: 8px"><span style="font-weight: 600; font-size: 17px">College list builder</span><span style="color: #5B6474; line-height: 1.5; font-size: 15px">Reach, target and likely schools with every deadline and requirement attached.</span></div>
+<div style="background: #F6F7F9; border-radius: 14px; padding: 22px; display: flex; flex-direction: column; gap: 8px"><span style="font-weight: 600; font-size: 17px">Deadline tracking</span><span style="color: #5B6474; line-height: 1.5; font-size: 15px">Early Action, Early Decision and Regular Decision dates with reminders before they arrive.</span></div>
+<div style="background: #F6F7F9; border-radius: 14px; padding: 22px; display: flex; flex-direction: column; gap: 8px"><span style="font-weight: 600; font-size: 17px">All documents in one place</span><span style="color: #5B6474; line-height: 1.5; font-size: 15px">Essays, resume, brag sheet, transcript, recommendation materials and aid forms.</span></div>
+<div style="background: #F6F7F9; border-radius: 14px; padding: 22px; display: flex; flex-direction: column; gap: 8px"><span style="font-weight: 600; font-size: 17px">Essay feedback</span><span style="color: #5B6474; line-height: 1.5; font-size: 15px">Upload a draft; your counselor comments, suggests edits or approves it.</span></div>
+<div style="background: #F6F7F9; border-radius: 14px; padding: 22px; display: flex; flex-direction: column; gap: 8px"><span style="font-weight: 600; font-size: 17px">Meetings and notes</span><span style="color: #5B6474; line-height: 1.5; font-size: 15px">Book time with your counselor and keep the action items from every meeting.</span></div>
+<div style="background: #F6F7F9; border-radius: 14px; padding: 22px; display: flex; flex-direction: column; gap: 8px"><span style="font-weight: 600; font-size: 17px">After you submit</span><span style="color: #5B6474; line-height: 1.5; font-size: 15px">FAFSA, scholarships, decisions, aid offers side by side, and your final enrollment choice.</span></div>
+</div>
+</section>
+
+<section id="counselors" style="background: #F2F7F6">
+<div style="max-width: 1200px; margin: 0 auto; padding: 80px 24px; display: flex; flex-wrap: wrap; gap: 48px; align-items: center">
+<div style="flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 16px">
+<p style="margin: 0; font-size: 14px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #0E6E66">For counselors</p>
+<h2 style="margin: 0; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 34px; letter-spacing: -0.02em; line-height: 1.15">See your whole caseload at a glance. Help the students who need it first.</h2>
+<ul style="margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 10px; font-size: 17px; line-height: 1.5; color: #3B4555">
+<li>Every student's progress, deadlines and missing documents on one screen</li>
+<li>Automatic flags for students who are falling behind</li>
+<li>An essay review queue with inline comments and approvals</li>
+<li>Share guides and resources with one student or the whole class</li>
+<li>Branded to your school, the way your LMS already is</li>
+</ul>
+<a href="counselor.html" style="font-weight: 600">Open the counselor dashboard</a>
+</div>
+<div style="flex: 1 1 420px; min-width: 0; background: #FFFFFF; border: 1px solid #E3E6EB; border-radius: 16px; padding: 22px; display: flex; flex-direction: column; gap: 12px">
+<span style="font-weight: 600">Needs attention this week</span>
+<div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-top: 1px solid #E3E6EB"><span>Sam O. · no essay draft yet</span><span style="font-size: 13px; font-weight: 600; color: #B42318; background: #FDECEA; padding: 4px 10px; border-radius: 999px">Falling behind</span></div>
+<div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-top: 1px solid #E3E6EB"><span>Priya N. · 1 rec letter missing</span><span style="font-size: 13px; font-weight: 600; color: #9A4A06; background: #FDF1E4; padding: 4px 10px; border-radius: 999px">Needs attention</span></div>
+<div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-top: 1px solid #E3E6EB"><span>Jordan R. · essay draft 2 submitted</span><span style="font-size: 13px; font-weight: 600; color: #0E6E66; background: #E3F1EF; padding: 4px 10px; border-radius: 999px">Ready to review</span></div>
+</div>
+</div>
+</section>
+
+<section id="privacy" style="max-width: 1200px; margin: 0 auto; padding: 88px 24px; display: flex; flex-direction: column; gap: 28px">
+<div style="display: flex; flex-direction: column; gap: 14px; max-width: 760px">
+<p style="margin: 0; font-size: 14px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #0E6E66">Privacy first</p>
+<h2 style="margin: 0; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 34px; letter-spacing: -0.02em; line-height: 1.15">Student data belongs to students and their school. Full stop.</h2>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px">
+<div style="border: 1px solid #E3E6EB; border-radius: 14px; padding: 22px; display: flex; flex-direction: column; gap: 8px"><span style="font-weight: 600; font-size: 17px">No ads</span><span style="color: #5B6474; line-height: 1.5; font-size: 15px">Students never see advertising inside Pathly.</span></div>
+<div style="border: 1px solid #E3E6EB; border-radius: 14px; padding: 22px; display: flex; flex-direction: column; gap: 8px"><span style="font-weight: 600; font-size: 17px">No data sales</span><span style="color: #5B6474; line-height: 1.5; font-size: 15px">We never sell or share student records with colleges or vendors.</span></div>
+<div style="border: 1px solid #E3E6EB; border-radius: 14px; padding: 22px; display: flex; flex-direction: column; gap: 8px"><span style="font-weight: 600; font-size: 17px">No third-party trackers</span><span style="color: #5B6474; line-height: 1.5; font-size: 15px">Nothing in the platform reports student activity to outside companies.</span></div>
+<div style="border: 1px solid #E3E6EB; border-radius: 14px; padding: 22px; display: flex; flex-direction: column; gap: 8px"><span style="font-weight: 600; font-size: 17px">Delete on exit</span><span style="color: #5B6474; line-height: 1.5; font-size: 15px">When a student graduates or a school leaves, their data is deleted.</span></div>
+</div>
+</section>
+
+<section id="pricing" style="background: #172033; color: #FFFFFF">
+<div style="max-width: 1200px; margin: 0 auto; padding: 88px 24px; display: flex; flex-wrap: wrap; gap: 48px; align-items: center">
+<div style="flex: 1 1 400px; min-width: 0; display: flex; flex-direction: column; gap: 16px">
+<p style="margin: 0; font-size: 14px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #8FD3C9">Simple school pricing</p>
+<h2 style="margin: 0; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 36px; letter-spacing: -0.02em; line-height: 1.15">One subscription. Every junior and senior. Every feature.</h2>
+<p style="margin: 0; font-size: 17px; line-height: 1.6; color: #C9D2DC">Schools pay — never students or families. Small schools get the same platform as large ones.</p>
+</div>
+<div style="flex: 1 1 400px; min-width: 0; background: #FFFFFF; color: #172033; border-radius: 18px; padding: 32px; display: flex; flex-direction: column; gap: 18px">
+<div style="display: flex; align-items: baseline; gap: 8px"><span style="font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 56px; letter-spacing: -0.03em">$4</span><span style="color: #5B6474; font-size: 16px">per junior &amp; senior, per year</span></div>
+<div style="display: flex; flex-direction: column; gap: 10px; font-size: 16px">
+<div style="display: flex; justify-content: space-between; padding-top: 10px; border-top: 1px solid #E3E6EB"><span>Annual minimum</span><span style="font-weight: 600">$750</span></div>
+<div style="display: flex; justify-content: space-between; padding-top: 10px; border-top: 1px solid #E3E6EB"><span>One-time onboarding &amp; training</span><span style="font-weight: 600">$250</span></div>
+<div style="display: flex; justify-content: space-between; padding-top: 10px; border-top: 1px solid #E3E6EB"><span>Example: 370 juniors &amp; seniors</span><span style="font-weight: 600">$1,480 / year</span></div>
+</div>
+<a href="#pilot" style="background: #0E6E66; color: #FFFFFF; text-decoration: none; padding: 15px 22px; border-radius: 10px; font-weight: 600; text-align: center">Request a pilot</a>
+</div>
+</div>
+</section>
+
+<section id="pilot" style="max-width: 1200px; margin: 0 auto; padding: 88px 24px; display: flex; flex-wrap: wrap; gap: 48px">
+<div style="flex: 1 1 380px; min-width: 0; display: flex; flex-direction: column; gap: 14px">
+<h2 style="margin: 0; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 34px; letter-spacing: -0.02em; line-height: 1.15">Launching with Massachusetts high schools in fall 2027.</h2>
+<p style="margin: 0; font-size: 17px; line-height: 1.6; color: #3B4555">We're looking for pilot schools and districts. Tell us about your counseling team and we'll set up a walkthrough.</p>
+</div>
+<div style="flex: 1 1 420px; min-width: 0; background: #F6F7F9; border-radius: 18px; padding: 28px">
+<sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
+<form style="display: flex; flex-direction: column; gap: 16px">
+<div style="display: flex; flex-direction: column; gap: 6px"><label for="pname" style="font-weight: 600; font-size: 14px">Your name</label><input id="pname" type="text" style="font: inherit; padding: 12px 14px; border: 1px solid #C9D2DC; border-radius: 10px; background: #FFFFFF"></div>
+<div style="display: flex; flex-direction: column; gap: 6px"><label for="pschool" style="font-weight: 600; font-size: 14px">School or district</label><input id="pschool" type="text" style="font: inherit; padding: 12px 14px; border: 1px solid #C9D2DC; border-radius: 10px; background: #FFFFFF"></div>
+<div style="display: flex; flex-direction: column; gap: 6px"><label for="prole" style="font-weight: 600; font-size: 14px">Your role</label><select id="prole" style="font: inherit; padding: 12px 14px; border: 1px solid #C9D2DC; border-radius: 10px; background: #FFFFFF"><option>School counselor</option><option>Director of counseling</option><option>Principal or administrator</option><option>District technology lead</option></select></div>
+<div style="display: flex; flex-direction: column; gap: 6px"><label for="pemail" style="font-weight: 600; font-size: 14px">Work email</label><input id="pemail" type="email" style="font: inherit; padding: 12px 14px; border: 1px solid #C9D2DC; border-radius: 10px; background: #FFFFFF"></div>
+<button type="button" onClick="{{ send }}" style="font: inherit; font-weight: 600; background: #0E6E66; color: #FFFFFF; border: 0; padding: 15px 22px; border-radius: 10px; cursor: pointer">Request a pilot</button>
+</form>
+</sc-if>
+<sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 10px; padding: 12px 0"><span style="font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 22px">Thanks — we'll be in touch.</span><span style="color: #5B6474">Expect an email from the Pathly team within two school days.</span></div>
+</sc-if>
+</div>
+</section>
+
+<footer style="border-top: 1px solid #E3E6EB">
+<div style="max-width: 1200px; margin: 0 auto; padding: 28px 24px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; font-size: 14px; color: #5B6474">
+<span>© 2026 Pathly · EEE 457 capstone concept</span>
+<span>Privacy · Accessibility · Contact</span>
+</div>
+</footer>
+</div>
+</script>
+
+<script type="application/json" id="dc-props">{"$preview":{"width":1440,"height":3400}}</script>
+<script src="runtime.js"></script>
+<script>
+class Component extends DCLogic {
+  renderVals() {
+    const sent = !!(this.state && this.state.sent);
+    return { sent: sent, notSent: !sent, send: () => this.setState({ sent: true }) };
+  }
+}
+</script>
+</body>
+</html>

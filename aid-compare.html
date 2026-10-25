@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pathly — compare aid offers</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F6F7F9}
+a{color:#0E6E66}a:hover{color:#0A4F49}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<noscript>This prototype needs JavaScript turned on.</noscript>
+
+<script type="text/x-template" id="dc-template">
+<div style="font-family: Inter, system-ui, sans-serif; color: #172033; background: #F6F7F9; width: 100%; min-height: 100vh">
+
+<header style="background: #FFFFFF; border-bottom: 1px solid #E3E6EB">
+<div style="padding: 14px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px">
+<div style="display: flex; align-items: center; gap: 14px; flex-wrap: wrap">
+<a href="student.html" style="display: flex; align-items: center; gap: 8px; text-decoration: none; color: #172033">
+<svg width="26" height="26" viewBox="0 0 28 28" aria-hidden="true"><rect width="28" height="28" rx="8" fill="#0E6E66"></rect><path d="M8 20c0-6 4-6 6-6s6 0 6-6" stroke="#FFFFFF" stroke-width="2.4" fill="none" stroke-linecap="round"></path><circle cx="20" cy="8" r="2.2" fill="#FFFFFF"></circle></svg>
+<span style="font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 19px">Pathly</span>
+</a>
+<span style="color: #9AA4B2" aria-hidden="true">/</span>
+<span style="font-weight: 600">Financial aid offers</span>
+</div>
+<a href="student.html" style="font-size: 14px; color: #5B6474">Back to dashboard</a>
+</div>
+</header>
+
+<div style="max-width: 1240px; margin: 0 auto; padding: 28px 24px; display: flex; flex-direction: column; gap: 22px">
+
+<div style="display: flex; flex-direction: column; gap: 8px">
+<h1 style="margin: 0; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 30px; letter-spacing: -0.02em">Compare your aid offers</h1>
+<p style="margin: 0; color: #5B6474; line-height: 1.55; max-width: 760px">Every college formats its offer differently. Pathly lines them up the same way so you can see what each school will really cost. The number that matters is <strong style="color: #172033">net cost</strong>: the full price minus grants and scholarships, the money you never pay back.</p>
+</div>
+
+<div style="display: flex; flex-wrap: wrap; gap: 14px; font-size: 14px">
+<span style="display: flex; align-items: center; gap: 8px"><span style="width: 14px; height: 14px; border-radius: 4px; background: #1E7A45"></span>Grants &amp; scholarships · free money</span>
+<span style="display: flex; align-items: center; gap: 8px"><span style="width: 14px; height: 14px; border-radius: 4px; background: #C2650A"></span>Loans · you pay back, with interest</span>
+<span style="display: flex; align-items: center; gap: 8px"><span style="width: 14px; height: 14px; border-radius: 4px; background: #3D6FB6"></span>Work-study · you earn it at a campus job</span>
+<span style="display: flex; align-items: center; gap: 8px"><span style="width: 14px; height: 14px; border-radius: 4px; background: #D5DAE1"></span>Still to cover</span>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 18px">
+<sc-for list="{{ offers }}" as="o" hint-placeholder-count="3">
+<section style="background: #FFFFFF; border: 1px solid #E3E6EB; border-radius: 16px; padding: 22px; display: flex; flex-direction: column; gap: 14px">
+<div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 10px">
+<h2 style="margin: 0; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 20px">{{ o.name }}</h2>
+<sc-if value="{{ o.best }}" hint-placeholder-val="{{ false }}"><span style="background: #E6F4EA; color: #1E6B3A; font-size: 12px; font-weight: 700; padding: 4px 10px; border-radius: 999px; white-space: nowrap">Lowest net cost</span></sc-if>
+</div>
+<div style="display: flex; flex-direction: column; gap: 2px">
+<span style="font-size: 14px; color: #5B6474">Net cost per year</span>
+<span style="font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 36px; letter-spacing: -0.02em">{{ o.netText }}</span>
+</div>
+<div style="display: flex; height: 14px; border-radius: 999px; overflow: hidden; background: #EEF0F3" role="img" aria-label="{{ o.barLabel }}">
+<div style="{{ o.gW }}"></div><div style="{{ o.lW }}"></div><div style="{{ o.wW }}"></div><div style="{{ o.rW }}"></div>
+</div>
+<div style="display: flex; flex-direction: column; font-size: 15px">
+<div style="display: flex; justify-content: space-between; padding: 9px 0; border-top: 1px solid #EEF0F3"><span>Total cost of attendance</span><span style="font-weight: 600">{{ o.coaText }}</span></div>
+<sc-for list="{{ o.grants }}" as="g" hint-placeholder-count="2">
+<div style="display: flex; justify-content: space-between; padding: 9px 0; border-top: 1px solid #EEF0F3; color: #1E6B3A"><span>{{ g.name }}</span><span style="font-weight: 600">− {{ g.amt }}</span></div>
+</sc-for>
+<div style="display: flex; justify-content: space-between; padding: 9px 0; border-top: 2px solid #172033"><span style="font-weight: 600">Net cost</span><span style="font-weight: 700">{{ o.netText }}</span></div>
+<div style="display: flex; justify-content: space-between; padding: 9px 0; border-top: 1px solid #EEF0F3; color: #9A4A06"><span>Federal student loans offered</span><span style="font-weight: 600">{{ o.loanText }}</span></div>
+<div style="display: flex; justify-content: space-between; padding: 9px 0; border-top: 1px solid #EEF0F3; color: #2D5A99"><span>Work-study offered</span><span style="font-weight: 600">{{ o.wsText }}</span></div>
+<div style="display: flex; justify-content: space-between; padding: 9px 0; border-top: 1px solid #EEF0F3"><span>Family still pays (after loans &amp; work-study)</span><span style="font-weight: 600">{{ o.gapText }}</span></div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 4px; font-size: 14px; color: #5B6474"><span>Renewable all four years? <strong style="color: #172033">{{ o.renew }}</strong></span><span>Reply by {{ o.reply }}</span></div>
+</section>
+</sc-for>
+</div>
+<p style="margin: 0; font-size: 13px; color: #5B6474">Sample offers with illustrative numbers for this draft. In the real product, students type in or upload each school's offer letter.</p>
+
+<div style="display: flex; flex-wrap: wrap; gap: 18px">
+<section style="flex: 1 1 380px; min-width: 0; background: #FFFFFF; border: 1px solid #E3E6EB; border-radius: 16px; padding: 22px; display: flex; flex-direction: column; gap: 10px">
+<h2 style="margin: 0; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 19px">Before you decide, ask each aid office</h2>
+<ul style="margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 8px; line-height: 1.5; color: #3B4555">
+<li>Is this grant or scholarship renewable, and what GPA do I need to keep it?</li>
+<li>Will my aid change if I win an outside scholarship?</li>
+<li>Does the cost include housing, food, books and travel, or only tuition and fees?</li>
+<li>Our finances changed since we filed. Can you review my offer again?</li>
+</ul>
+</section>
+<section style="flex: 1 1 380px; min-width: 0; background: #F2F7F6; border-radius: 16px; padding: 22px; display: flex; flex-direction: column; gap: 10px">
+<h2 style="margin: 0; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 19px">Not sure what something means?</h2>
+<p style="margin: 0; line-height: 1.55; color: #3B4555">Read the guide to reading your aid offer, or book 15 minutes with your counselor to go through it together. Bringing a parent or guardian is welcome.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 10px">
+<a href="resources.html" style="background: #0E6E66; color: #FFFFFF; text-decoration: none; font-weight: 600; padding: 12px 16px; border-radius: 10px">Open the guide</a>
+<a href="student.html" style="font-weight: 600; padding: 12px 6px">Book a meeting</a>
+</div>
+</section>
+</div>
+
+</div>
+</div>
+</script>
+
+<script type="application/json" id="dc-props">{"$preview":{"width":1440,"height":1400}}</script>
+<script src="runtime.js"></script>
+<script>
+class Component extends DCLogic {
+  renderVals() {
+    const fmt = (n) => '$' + n.toLocaleString('en-US');
+    const raw = [
+      { name: 'UMass Amherst', coa: 38000, grants: [{ name: 'Federal Pell Grant', v: 4500 }, { name: 'State grant', v: 2500 }, { name: 'University grant', v: 9000 }], loans: 5500, ws: 2000, renew: 'Yes, with FAFSA each year', reply: 'May 1' },
+      { name: 'Northeastern University', coa: 90000, grants: [{ name: 'Merit scholarship', v: 25000 }, { name: 'University grant', v: 38000 }, { name: 'Federal Pell Grant', v: 4500 }], loans: 5500, ws: 2500, renew: 'Merit: yes, with 3.0 GPA', reply: 'May 1' },
+      { name: 'Worcester State University', coa: 27000, grants: [{ name: 'Federal Pell Grant', v: 4500 }, { name: 'State grant', v: 2500 }, { name: 'Presidential scholarship', v: 4000 }], loans: 5500, ws: 1500, renew: 'Scholarship: first year only', reply: 'May 1' }
+    ];
+    const maxCoa = Math.max.apply(null, raw.map((r) => r.coa));
+    const offers = raw.map((r) => {
+      const g = r.grants.reduce((a, b) => a + b.v, 0);
+      const net = r.coa - g;
+      const gap = Math.max(0, net - r.loans - r.ws);
+      const pct = (v) => (v / maxCoa * 100).toFixed(2) + '%';
+      return {
+        name: r.name, renew: r.renew, reply: r.reply, net: net,
+        coaText: fmt(r.coa), netText: fmt(net), loanText: fmt(r.loans), wsText: fmt(r.ws), gapText: fmt(gap),
+        grants: r.grants.map((x) => ({ name: x.name, amt: fmt(x.v) })),
+        gW: 'background:#1E7A45;width:' + pct(g), lW: 'background:#C2650A;width:' + pct(r.loans),
+        wW: 'background:#3D6FB6;width:' + pct(r.ws), rW: 'background:#D5DAE1;width:' + pct(gap),
+        barLabel: r.name + ': ' + fmt(g) + ' grants, ' + fmt(r.loans) + ' loans, ' + fmt(r.ws) + ' work-study, ' + fmt(gap) + ' still to cover'
+      };
+    });
+    const minNet = Math.min.apply(null, offers.map((o) => o.net));
+    offers.forEach((o) => { o.best = o.net === minNet; });
+    return { offers: offers };
+  }
+}
+</script>
+</body>
+</html>

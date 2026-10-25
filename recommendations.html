@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pathly — recommendations</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F6F7F9}
+a{color:#0E6E66}a:hover{color:#0A4F49}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<noscript>This prototype needs JavaScript turned on.</noscript>
+
+<script type="text/x-template" id="dc-template">
+<div style="font-family: Inter, system-ui, sans-serif; color: #172033; background: #F6F7F9; width: 100%; min-height: 100vh">
+
+<header style="background: #FFFFFF; border-bottom: 1px solid #E3E6EB">
+<div style="padding: 14px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px">
+<div style="display: flex; align-items: center; gap: 14px; flex-wrap: wrap">
+<a href="student.html" style="display: flex; align-items: center; gap: 8px; text-decoration: none; color: #172033">
+<svg width="26" height="26" viewBox="0 0 28 28" aria-hidden="true"><rect width="28" height="28" rx="8" fill="#0E6E66"></rect><path d="M8 20c0-6 4-6 6-6s6 0 6-6" stroke="#FFFFFF" stroke-width="2.4" fill="none" stroke-linecap="round"></path><circle cx="20" cy="8" r="2.2" fill="#FFFFFF"></circle></svg>
+<span style="font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 19px">Pathly</span>
+</a>
+<span style="color: #9AA4B2" aria-hidden="true">/</span>
+<span style="font-weight: 600">Recommendation letters</span>
+</div>
+<div role="group" aria-label="Viewing as" style="display: flex; gap: 6px; background: #F6F7F9; padding: 4px; border-radius: 12px">
+<sc-for list="{{ roles }}" as="r" hint-placeholder-count="2">
+<button type="button" aria-pressed="{{ r.pressed }}" onClick="{{ r.pick }}" style="{{ r.style }}">{{ r.label }}</button>
+</sc-for>
+</div>
+</div>
+</header>
+
+<div style="max-width: 1240px; margin: 0 auto; padding: 28px 24px; display: flex; flex-direction: column; gap: 22px">
+
+<sc-if value="{{ isStudent }}" hint-placeholder-val="{{ true }}">
+<div style="display: flex; flex-direction: column; gap: 22px">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<h1 style="margin: 0; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 30px; letter-spacing: -0.02em">Your recommendation letters</h1>
+<p style="margin: 0; color: #5B6474; line-height: 1.55; max-width: 720px">Most colleges ask for one or two teacher letters plus one from your counselor. Ask at least four weeks before your earliest deadline, and give your teacher your brag sheet so they have specifics to write about.</p>
+</div>
+
+<div style="display: flex; flex-wrap: wrap; gap: 20px; align-items: flex-start">
+<section aria-labelledby="mine-h" style="flex: 3 1 460px; min-width: 0; display: flex; flex-direction: column; gap: 14px">
+<h2 id="mine-h" style="margin: 0; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 19px">Requests</h2>
+
+<div style="background: #FFFFFF; border: 1px solid #E3E6EB; border-radius: 16px; padding: 22px; display: flex; flex-direction: column; gap: 16px">
+<div style="display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap">
+<div style="display: flex; flex-direction: column; gap: 2px"><span style="font-weight: 600; font-size: 17px">Mr. Chen · AP Chemistry</span><span style="font-size: 14px; color: #5B6474">For UMass Amherst, Northeastern + 5 more · needed by Oct 23</span></div>
+<span style="{{ chenPill }}">{{ chenLabel }}</span>
+</div>
+<ol style="list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px">
+<sc-for list="{{ steps }}" as="s" hint-placeholder-count="4">
+<li style="display: flex; flex-direction: column; gap: 6px"><div style="{{ s.bar }}"></div><span style="{{ s.text }}">{{ s.label }}</span></li>
+</sc-for>
+</ol>
+</div>
+
+<div style="background: #FFFFFF; border: 1px solid #E3E6EB; border-radius: 16px; padding: 22px; display: flex; flex-direction: column; gap: 16px">
+<div style="display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap">
+<div style="display: flex; flex-direction: column; gap: 2px"><span style="font-weight: 600; font-size: 17px">Ms. Okoye · English 11 Honors</span><span style="font-size: 14px; color: #5B6474">For all 7 colleges · uploaded Oct 9</span></div>
+<span style="background: #E6F4EA; color: #1E6B3A; font-size: 13px; font-weight: 600; padding: 4px 10px; border-radius: 999px">Submitted</span>
+</div>
+<p style="margin: 0; font-size: 14px; color: #5B6474">You can't read the letter. Colleges expect it to stay confidential, and Pathly only shows that it's done. Don't forget a thank-you note.</p>
+</div>
+
+<div style="background: #FFFFFF; border: 1px solid #E3E6EB; border-radius: 16px; padding: 22px; display: flex; flex-direction: column; gap: 10px">
+<div style="display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap">
+<div style="display: flex; flex-direction: column; gap: 2px"><span style="font-weight: 600; font-size: 17px">Ms. Alvarez · School counselor</span><span style="font-size: 14px; color: #5B6474">School report, transcript and counselor letter</span></div>
+<span style="background: #E3F1EF; color: #0A4F49; font-size: 13px; font-weight: 600; padding: 4px 10px; border-radius: 999px">Handled by counselor</span>
+</div>
+</div>
+</section>
+
+<section aria-labelledby="new-h" style="flex: 2 1 340px; min-width: 0; background: #FFFFFF; border: 1px solid #E3E6EB; border-radius: 16px; padding: 22px; display: flex; flex-direction: column; gap: 14px">
+<h2 id="new-h" style="margin: 0; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 19px">Ask a teacher</h2>
+<div style="display: flex; flex-direction: column; gap: 6px"><label for="teacher" style="font-weight: 600; font-size: 14px">Teacher</label><select id="teacher" style="font: inherit; padding: 12px 14px; border: 1px solid #C9D2DC; border-radius: 10px; background: #FFFFFF"><option>Choose a teacher</option><option>Mr. Patel · AP Calculus</option><option>Ms. Ruiz · U.S. History</option></select></div>
+<div style="display: flex; flex-direction: column; gap: 6px"><label for="needby" style="font-weight: 600; font-size: 14px">Needed by</label><input id="needby" type="date" style="font: inherit; padding: 12px 14px; border: 1px solid #C9D2DC; border-radius: 10px"></div>
+<div style="display: flex; flex-direction: column; gap: 6px"><label for="note" style="font-weight: 600; font-size: 14px">A note to your teacher</label><textarea id="note" rows="4" placeholder="What you'd like them to mention — a project, how you grew in their class…" style="font: inherit; padding: 12px 14px; border: 1px solid #C9D2DC; border-radius: 10px; resize: vertical"></textarea></div>
+<label style="display: flex; gap: 10px; align-items: center; font-size: 15px"><input type="checkbox" checked style="width: 20px; height: 20px">Attach my brag sheet and resume</label>
+<button type="button" style="font: inherit; font-weight: 600; background: #0E6E66; color: #FFFFFF; border: 0; padding: 14px; border-radius: 10px; cursor: pointer; min-height: 44px">Send request</button>
+<a href="resources.html" style="font-size: 14px; font-weight: 600">How to ask for a recommendation</a>
+</section>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isTeacher }}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 22px">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<h1 style="margin: 0; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 30px; letter-spacing: -0.02em">Letter requests · Mr. Chen</h1>
+<p style="margin: 0; color: #5B6474; line-height: 1.55">Every request in one list, sorted by deadline. Uploading here sends the letter to each college the student chose.</p>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px">
+<div style="background: #FFFFFF; border: 1px solid #E3E6EB; border-radius: 14px; padding: 18px; display: flex; flex-direction: column; gap: 4px"><span style="font-size: 14px; color: #5B6474">New requests</span><span style="font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 30px">{{ newCount }}</span></div>
+<div style="background: #FFFFFF; border: 1px solid #E3E6EB; border-radius: 14px; padding: 18px; display: flex; flex-direction: column; gap: 4px"><span style="font-size: 14px; color: #5B6474">Due in 7 days</span><span style="font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 30px; color: #B42318">2</span></div>
+<div style="background: #FFFFFF; border: 1px solid #E3E6EB; border-radius: 14px; padding: 18px; display: flex; flex-direction: column; gap: 4px"><span style="font-size: 14px; color: #5B6474">Submitted this fall</span><span style="font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 30px">{{ doneCount }}</span></div>
+</div>
+<section aria-label="Requests" style="background: #FFFFFF; border: 1px solid #E3E6EB; border-radius: 16px; padding: 8px 22px">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 14px; padding: 18px 0">
+<div style="display: flex; flex-direction: column; gap: 4px; min-width: 0"><span style="font-weight: 600; font-size: 17px">Jordan Rivera · Senior</span><span style="font-size: 14px; color: #5B6474">7 colleges · needed by Oct 23 · brag sheet attached</span></div>
+<div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap">
+<span style="{{ chenPill }}">{{ chenLabel }}</span>
+<sc-if value="{{ canAccept }}" hint-placeholder-val="{{ true }}"><button type="button" onClick="{{ accept }}" style="font: inherit; font-weight: 600; font-size: 14px; background: #0E6E66; color: #FFFFFF; border: 0; padding: 11px 16px; border-radius: 10px; cursor: pointer; min-height: 44px">Accept</button></sc-if>
+<sc-if value="{{ canUpload }}" hint-placeholder-val="{{ false }}"><button type="button" onClick="{{ upload }}" style="font: inherit; font-weight: 600; font-size: 14px; background: #0E6E66; color: #FFFFFF; border: 0; padding: 11px 16px; border-radius: 10px; cursor: pointer; min-height: 44px">Upload letter</button></sc-if>
+</div>
+</div>
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 14px; padding: 18px 0; border-top: 1px solid #EEF0F3">
+<div style="display: flex; flex-direction: column; gap: 4px; min-width: 0"><span style="font-weight: 600; font-size: 17px">Priya Natarajan · Senior</span><span style="font-size: 14px; color: #5B6474">8 colleges · needed by Oct 26 · brag sheet attached</span></div>
+<span style="background: #FDF1E4; color: #9A4A06; font-size: 13px; font-weight: 600; padding: 4px 10px; border-radius: 999px">Writing</span>
+</div>
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 14px; padding: 18px 0; border-top: 1px solid #EEF0F3">
+<div style="display: flex; flex-direction: column; gap: 4px; min-width: 0"><span style="font-weight: 600; font-size: 17px">Lucas Ferreira · Senior</span><span style="font-size: 14px; color: #5B6474">5 colleges · needed by Nov 8</span></div>
+<span style="background: #E6F4EA; color: #1E6B3A; font-size: 13px; font-weight: 600; padding: 4px 10px; border-radius: 999px">Submitted</span>
+</div>
+</section>
+<p style="margin: 0; font-size: 13px; color: #5B6474">Sample students for this draft.</p>
+</div>
+</sc-if>
+
+</div>
+</div>
+</script>
+
+<script type="application/json" id="dc-props">{"$preview":{"width":1440,"height":1250}}</script>
+<script src="runtime.js"></script>
+<script>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { role: 'student', stage: 0 };
+  }
+  renderVals() {
+    const st = this.state || {};
+    const role = st.role || 'student';
+    const stage = st.stage || 0;
+    const labels = ['Requested', 'Accepted', 'Writing', 'Submitted'];
+    const pills = ['background:#EEF0F3;color:#3B4555', 'background:#E3F1EF;color:#0A4F49', 'background:#FDF1E4;color:#9A4A06', 'background:#E6F4EA;color:#1E6B3A'];
+    const steps = labels.map((l, i) => ({
+      label: l,
+      bar: 'height:8px;border-radius:999px;background:' + (i <= stage ? '#0E6E66' : '#E3E6EB'),
+      text: 'font-size:13px;' + (i <= stage ? 'color:#172033;font-weight:600' : 'color:#5B6474')
+    }));
+    const roles = [{ id: 'student', label: 'Student view' }, { id: 'teacher', label: 'Teacher view' }].map((r) => {
+      const on = r.id === role;
+      return {
+        label: r.label, pressed: on ? 'true' : 'false', pick: () => this.setState({ role: r.id }),
+        style: 'font:inherit;font-size:14px;font-weight:600;min-height:40px;padding:8px 14px;border-radius:9px;border:0;cursor:pointer;' + (on ? 'background:#FFFFFF;color:#172033;box-shadow:0 1px 3px rgba(20,33,61,0.15)' : 'background:transparent;color:#5B6474')
+      };
+    });
+    return {
+      roles: roles, isStudent: role === 'student', isTeacher: role === 'teacher',
+      steps: steps, chenLabel: labels[stage],
+      chenPill: pills[stage] + ';font-size:13px;font-weight:600;padding:4px 10px;border-radius:999px;white-space:nowrap',
+      canAccept: stage === 0, canUpload: stage === 1 || stage === 2,
+      accept: () => this.setState({ stage: 1 }),
+      upload: () => this.setState({ stage: 3 }),
+      newCount: stage === 0 ? 1 : 0,
+      doneCount: stage === 3 ? 10 : 9
+    };
+  }
+}
+</script>
+</body>
+</html>

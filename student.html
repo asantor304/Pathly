@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pathly — student dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F6F7F9}
+a{color:#0E6E66}a:hover{color:#0A4F49}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<noscript>This prototype needs JavaScript turned on.</noscript>
+
+<script type="text/x-template" id="dc-template">
+<div style="font-family: Inter, system-ui, sans-serif; color: #172033; background: #F6F7F9; width: 100%; min-height: 100vh">
+
+<header style="background: #FFFFFF; border-bottom: 1px solid #E3E6EB">
+<div style="padding: 14px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px">
+<div style="display: flex; align-items: center; gap: 14px; flex-wrap: wrap">
+<a href="index.html" style="display: flex; align-items: center; gap: 8px; text-decoration: none; color: #172033">
+<svg width="26" height="26" viewBox="0 0 28 28" aria-hidden="true"><rect width="28" height="28" rx="8" fill="#0E6E66"></rect><path d="M8 20c0-6 4-6 6-6s6 0 6-6" stroke="#FFFFFF" stroke-width="2.4" fill="none" stroke-linecap="round"></path><circle cx="20" cy="8" r="2.2" fill="#FFFFFF"></circle></svg>
+<span style="font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 19px">Pathly</span>
+</a>
+<span style="display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 600; color: #FFFFFF; background: {{schoolColor}}; padding: 6px 12px; border-radius: 8px">[Your High School] · College Counseling</span>
+</div>
+<div style="display: flex; align-items: center; gap: 12px">
+<a href="counselor.html" style="font-size: 14px; color: #5B6474">Switch to counselor view</a>
+<button type="button" aria-label="Notifications" style="width: 44px; height: 44px; border-radius: 10px; border: 1px solid #E3E6EB; background: #FFFFFF; display: flex; align-items: center; justify-content: center; cursor: pointer"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B4555" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"></path><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"></path></svg></button>
+<span style="width: 40px; height: 40px; border-radius: 999px; background: #E3F1EF; color: #0E6E66; display: flex; align-items: center; justify-content: center; font-weight: 700">JR</span>
+</div>
+</div>
+</header>
+
+<div style="display: flex; flex-wrap: wrap; gap: 24px; padding: 24px; max-width: 1400px; margin: 0 auto">
+
+<nav aria-label="Student" style="flex: 1 1 210px; max-width: 260px; display: flex; flex-direction: column; gap: 4px">
+<a href="#" style="padding: 11px 14px; border-radius: 10px; background: #E3F1EF; color: #0A4F49; font-weight: 600; text-decoration: none">Dashboard</a>
+<a href="#colleges" style="padding: 11px 14px; border-radius: 10px; color: #3B4555; text-decoration: none">College list</a>
+<a href="#deadlines" style="padding: 11px 14px; border-radius: 10px; color: #3B4555; text-decoration: none">Deadlines</a>
+<a href="#documents" style="padding: 11px 14px; border-radius: 10px; color: #3B4555; text-decoration: none">Documents</a>
+<a href="essay.html" style="padding: 11px 14px; border-radius: 10px; color: #3B4555; text-decoration: none">Essays</a>
+<a href="recommendations.html" style="padding: 11px 14px; border-radius: 10px; color: #3B4555; text-decoration: none">Recommendations</a>
+<a href="#meetings" style="padding: 11px 14px; border-radius: 10px; color: #3B4555; text-decoration: none">Meetings</a>
+<a href="aid-compare.html" style="padding: 11px 14px; border-radius: 10px; color: #3B4555; text-decoration: none">Compare aid offers</a>
+<a href="resources.html" style="padding: 11px 14px; border-radius: 10px; color: #3B4555; text-decoration: none">Guides &amp; resources</a>
+</nav>
+
+<main style="flex: 999 1 560px; min-width: 0; display: flex; flex-direction: column; gap: 20px">
+
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 12px">
+<div style="display: flex; flex-direction: column; gap: 4px">
+<h1 style="margin: 0; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 30px; letter-spacing: -0.02em">Good afternoon, Jordan</h1>
+<span style="color: #5B6474">Senior · Class of 2027 · Counselor: Ms. Alvarez</span>
+</div>
+<span style="font-size: 14px; color: #5B6474">Tuesday, October 20</span>
+</div>
+
+<div style="display: flex; flex-wrap: wrap; gap: 20px">
+<section style="flex: 2 1 420px; min-width: 0; background: #0E6E66; color: #FFFFFF; border-radius: 16px; padding: 24px; display: flex; flex-direction: column; gap: 12px">
+<span style="font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #BFE5DF">Your next step</span>
+<h2 style="margin: 0; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 24px">Revise your personal essay</h2>
+<p style="margin: 0; line-height: 1.55; color: #E3F1EF">Ms. Alvarez left 3 comments on draft 2. Finishing this first unlocks your two Early Action applications, due Nov 1.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 4px">
+<a href="essay.html" style="background: #FFFFFF; color: #0A4F49; text-decoration: none; font-weight: 600; padding: 12px 18px; border-radius: 10px">Open feedback</a>
+<a href="#meetings" style="color: #FFFFFF; font-weight: 600; padding: 12px 6px">Book a meeting</a>
+</div>
+</section>
+<section style="flex: 1 1 260px; min-width: 0; background: #FFFFFF; border: 1px solid #E3E6EB; border-radius: 16px; padding: 24px; display: flex; flex-direction: column; gap: 12px">
+<span style="font-weight: 600">Application readiness</span>
+<span style="font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 44px; letter-spacing: -0.02em">{{readiness}}%</span>
+<div style="height: 10px; background: #E3E6EB; border-radius: 999px"><div style="width: {{readiness}}%; height: 10px; background: #0E6E66; border-radius: 999px"></div></div>
+<span style="font-size: 14px; color: #5B6474">{{doneCount}} of {{todoCount}} steps done this week</span>
+</section>
+</div>
+
+<div style="display: flex; flex-wrap: wrap; gap: 20px">
+<section aria-labelledby="todo-h" style="flex: 3 1 420px; min-width: 0; background: #FFFFFF; border: 1px solid #E3E6EB; border-radius: 16px; padding: 24px; display: flex; flex-direction: column; gap: 6px">
+<h2 id="todo-h" style="margin: 0 0 8px; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 19px">This week's to-do</h2>
+<sc-for list="{{ todos }}" as="t" hint-placeholder-count="4">
+<div style="display: flex; gap: 14px; align-items: flex-start; padding: 12px 0; border-top: 1px solid #EEF0F3">
+<button type="button" aria-label="{{ t.toggleLabel }}" onClick="{{ t.toggle }}" style="{{ t.boxStyle }}"><sc-if value="{{ t.done }}" hint-placeholder-val="{{ false }}"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg></sc-if></button>
+<div style="display: flex; flex-direction: column; gap: 4px; min-width: 0">
+<span style="{{ t.titleStyle }}">{{ t.title }}</span>
+<span style="font-size: 14px; color: #5B6474; line-height: 1.45"><strong style="color: #3B4555; font-weight: 600">Why it matters:</strong> {{ t.why }}</span>
+</div>
+</div>
+</sc-for>
+</section>
+
+<section id="deadlines" aria-labelledby="dl-h" style="flex: 2 1 300px; min-width: 0; background: #FFFFFF; border: 1px solid #E3E6EB; border-radius: 16px; padding: 24px; display: flex; flex-direction: column; gap: 6px">
+<h2 id="dl-h" style="margin: 0 0 8px; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 19px">Upcoming deadlines</h2>
+<sc-for list="{{ deadlines }}" as="d" hint-placeholder-count="5">
+<div style="display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 12px 0; border-top: 1px solid #EEF0F3">
+<div style="display: flex; flex-direction: column; gap: 2px; min-width: 0"><span style="font-weight: 600">{{ d.what }}</span><span style="font-size: 14px; color: #5B6474">{{ d.date }}</span></div>
+<span style="{{ d.pillStyle }}">{{ d.left }}</span>
+</div>
+</sc-for>
+</section>
+</div>
+
+<section id="colleges" aria-labelledby="cl-h" style="background: #FFFFFF; border: 1px solid #E3E6EB; border-radius: 16px; padding: 24px; display: flex; flex-direction: column; gap: 12px">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px">
+<h2 id="cl-h" style="margin: 0; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 19px">My college list</h2>
+<button type="button" style="font: inherit; font-weight: 600; font-size: 14px; background: #FFFFFF; color: #0E6E66; border: 1px solid #0E6E66; padding: 10px 14px; border-radius: 10px; cursor: pointer; min-height: 44px">Add a college</button>
+</div>
+<div style="overflow-x: auto">
+<table style="width: 100%; border-collapse: collapse; font-size: 15px; min-width: 640px">
+<thead><tr style="text-align: left; color: #5B6474; font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em"><th style="padding: 10px 8px; font-weight: 600">College</th><th style="padding: 10px 8px; font-weight: 600">Fit</th><th style="padding: 10px 8px; font-weight: 600">Plan</th><th style="padding: 10px 8px; font-weight: 600">Deadline</th><th style="padding: 10px 8px; font-weight: 600">Still needed</th><th style="padding: 10px 8px; font-weight: 600">Status</th></tr></thead>
+<tbody>
+<sc-for list="{{ colleges }}" as="c" hint-placeholder-count="5">
+<tr style="border-top: 1px solid #EEF0F3"><td style="padding: 14px 8px; font-weight: 600">{{ c.name }}</td><td style="padding: 14px 8px; color: #3B4555">{{ c.fit }}</td><td style="padding: 14px 8px; color: #3B4555">{{ c.plan }}</td><td style="padding: 14px 8px; color: #3B4555">{{ c.deadline }}</td><td style="padding: 14px 8px; color: #3B4555">{{ c.needed }}</td><td style="padding: 14px 8px"><span style="{{ c.pillStyle }}">{{ c.status }}</span></td></tr>
+</sc-for>
+</tbody>
+</table>
+</div>
+<p style="margin: 0; font-size: 13px; color: #5B6474">Sample data for this draft. Ready to submit? Pathly sends you to Common App with everything in place.</p>
+</section>
+
+<div style="display: flex; flex-wrap: wrap; gap: 20px">
+<section id="documents" aria-labelledby="doc-h" style="flex: 1 1 340px; min-width: 0; background: #FFFFFF; border: 1px solid #E3E6EB; border-radius: 16px; padding: 24px; display: flex; flex-direction: column; gap: 6px">
+<h2 id="doc-h" style="margin: 0 0 8px; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 19px">Documents</h2>
+<sc-for list="{{ docs }}" as="f" hint-placeholder-count="6">
+<div style="display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 11px 0; border-top: 1px solid #EEF0F3">
+<span style="display: flex; align-items: center; gap: 10px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5B6474" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><path d="M14 2v6h6"></path></svg>{{ f.name }}</span>
+<span style="{{ f.pillStyle }}">{{ f.status }}</span>
+</div>
+</sc-for>
+<button type="button" style="font: inherit; font-weight: 600; font-size: 14px; margin-top: 10px; background: #F6F7F9; color: #172033; border: 1px dashed #C9D2DC; padding: 12px; border-radius: 10px; cursor: pointer">Upload a document</button>
+</section>
+
+<section id="meetings" aria-labelledby="mt-h" style="flex: 1 1 340px; min-width: 0; background: #FFFFFF; border: 1px solid #E3E6EB; border-radius: 16px; padding: 24px; display: flex; flex-direction: column; gap: 14px">
+<h2 id="mt-h" style="margin: 0; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 19px">Meetings with Ms. Alvarez</h2>
+<div style="background: #F2F7F6; border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 4px">
+<span style="font-size: 13px; font-weight: 600; color: #0E6E66; text-transform: uppercase; letter-spacing: 0.06em">Next</span>
+<span style="font-weight: 600; font-size: 17px">Thursday, Oct 29 · 2:15 pm · Counseling office</span>
+<span style="font-size: 14px; color: #5B6474">Agenda: finalize Early Action list, recommendation follow-up</span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px">
+<span style="font-weight: 600">Notes from Oct 13</span>
+<ul style="margin: 0; padding-left: 20px; color: #3B4555; line-height: 1.6; font-size: 15px">
+<li>Narrow list to 7 schools — done</li>
+<li>Ask Mr. Chen for a second recommendation by Oct 23</li>
+<li>Start the CSS Profile for two private colleges</li>
+</ul>
+</div>
+<button type="button" style="font: inherit; font-weight: 600; font-size: 14px; background: #0E6E66; color: #FFFFFF; border: 0; padding: 12px; border-radius: 10px; cursor: pointer; min-height: 44px">Book another meeting</button>
+</section>
+</div>
+
+</main>
+</div>
+</div>
+</script>
+
+<script type="application/json" id="dc-props">{"schoolColor":{"editor":"color","default":"#7A1F2B","options":["#7A1F2B","#1F3A7A","#2F5D2A","#4A2A6B"]},"$preview":{"width":1440,"height":1500}}</script>
+<script src="runtime.js"></script>
+<script>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { done: { t2: true } };
+  }
+  pill(kind) {
+    const map = {
+      ok: 'background:#E6F4EA;color:#1E6B3A',
+      warn: 'background:#FDF1E4;color:#9A4A06',
+      bad: 'background:#FDECEA;color:#B42318',
+      info: 'background:#E3F1EF;color:#0A4F49',
+      muted: 'background:#EEF0F3;color:#3B4555'
+    };
+    return (map[kind] || map.muted) + ';font-size:13px;font-weight:600;padding:4px 10px;border-radius:999px;white-space:nowrap';
+  }
+  renderVals() {
+    const done = (this.state && this.state.done) || {};
+    const raw = [
+      { id: 't1', title: 'Revise personal essay using Ms. Alvarez’s comments', why: 'Every college on your list reads this essay. It’s your chance to show who you are beyond grades.' },
+      { id: 't2', title: 'Confirm your 7-school college list', why: 'Your list decides which deadlines and supplements you need to plan for.' },
+      { id: 't3', title: 'Send a thank-you and reminder to Mr. Chen', why: 'Teachers write many letters in the fall. A polite reminder helps yours arrive on time.' },
+      { id: 't4', title: 'Create your FSA ID for the FAFSA', why: 'You and a parent each need one before you can file for federal financial aid.' },
+      { id: 't5', title: 'Upload your updated activities resume', why: 'Counselors use it to write your school report, and you’ll reuse it in applications.' }
+    ];
+    const todos = raw.map((t) => {
+      const isDone = !!done[t.id];
+      return Object.assign({}, t, {
+        done: isDone,
+        toggleLabel: (isDone ? 'Mark not done: ' : 'Mark done: ') + t.title,
+        toggle: () => { const n = Object.assign({}, done); n[t.id] = !isDone; this.setState({ done: n }); },
+        boxStyle: 'flex:none;width:28px;height:28px;margin-top:2px;border-radius:8px;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;' + (isDone ? 'background:#0E6E66;border:2px solid #0E6E66' : 'background:#FFFFFF;border:2px solid #9AA4B2'),
+        titleStyle: 'font-weight:600;' + (isDone ? 'color:#5B6474;text-decoration:line-through' : 'color:#172033')
+      });
+    });
+    const doneCount = todos.filter((t) => t.done).length;
+    const deadlines = [
+      { what: 'Second recommendation request', date: 'Fri, Oct 23', left: '3 days', pillStyle: this.pill('bad') },
+      { what: 'Early Action · 2 colleges', date: 'Sun, Nov 1', left: '12 days', pillStyle: this.pill('warn') },
+      { what: 'CSS Profile (priority)', date: 'Sun, Nov 15', left: '26 days', pillStyle: this.pill('info') },
+      { what: 'Regular Decision · 4 colleges', date: 'Fri, Jan 1', left: '73 days', pillStyle: this.pill('muted') },
+      { what: 'Local scholarship essay', date: 'Mon, Feb 1', left: '104 days', pillStyle: this.pill('muted') }
+    ];
+    const colleges = [
+      { name: 'UMass Amherst', fit: 'Target', plan: 'Early Action', deadline: 'Nov 1', needed: 'Personal essay', status: 'In progress', pillStyle: this.pill('info') },
+      { name: 'Northeastern University', fit: 'Reach', plan: 'Early Action', deadline: 'Nov 1', needed: 'Essay, 2nd rec', status: 'In progress', pillStyle: this.pill('info') },
+      { name: 'Syracuse University', fit: 'Target', plan: 'Regular', deadline: 'Jan 1', needed: 'Supplement', status: 'Not started', pillStyle: this.pill('muted') },
+      { name: 'Boston College', fit: 'Reach', plan: 'Regular', deadline: 'Jan 1', needed: 'Essay, CSS Profile', status: 'Not started', pillStyle: this.pill('muted') },
+      { name: 'Worcester State University', fit: 'Likely', plan: 'Rolling', deadline: 'Rolling', needed: '—', status: 'Ready', pillStyle: this.pill('ok') }
+    ];
+    const docs = [
+      { name: 'Transcript (sent by school)', status: 'On file', pillStyle: this.pill('ok') },
+      { name: 'Personal essay · draft 2', status: 'Comments', pillStyle: this.pill('warn') },
+      { name: 'Activities resume', status: 'Update', pillStyle: this.pill('warn') },
+      { name: 'Brag sheet', status: 'Approved', pillStyle: this.pill('ok') },
+      { name: 'Recommendation letters', status: '1 of 2', pillStyle: this.pill('bad') },
+      { name: 'FAFSA / financial aid forms', status: 'Not started', pillStyle: this.pill('muted') }
+    ];
+    return {
+      schoolColor: this.props.schoolColor ?? '#7A1F2B',
+      todos: todos, doneCount: doneCount, todoCount: todos.length,
+      readiness: 54 + doneCount * 4,
+      deadlines: deadlines, colleges: colleges, docs: docs
+    };
+  }
+}
+</script>
+</body>
+</html>

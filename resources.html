@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pathly — resources and guides</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F6F7F9}
+a{color:#0E6E66}a:hover{color:#0A4F49}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<noscript>This prototype needs JavaScript turned on.</noscript>
+
+<script type="text/x-template" id="dc-template">
+<div style="font-family: Inter, system-ui, sans-serif; color: #172033; background: #F6F7F9; width: 100%; min-height: 100vh">
+
+<header style="background: #FFFFFF; border-bottom: 1px solid #E3E6EB">
+<div style="padding: 14px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px">
+<div style="display: flex; align-items: center; gap: 14px; flex-wrap: wrap">
+<a href="student.html" style="display: flex; align-items: center; gap: 8px; text-decoration: none; color: #172033">
+<svg width="26" height="26" viewBox="0 0 28 28" aria-hidden="true"><rect width="28" height="28" rx="8" fill="#0E6E66"></rect><path d="M8 20c0-6 4-6 6-6s6 0 6-6" stroke="#FFFFFF" stroke-width="2.4" fill="none" stroke-linecap="round"></path><circle cx="20" cy="8" r="2.2" fill="#FFFFFF"></circle></svg>
+<span style="font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 19px">Pathly</span>
+</a>
+<span style="color: #9AA4B2" aria-hidden="true">/</span>
+<span style="font-weight: 600">Resources &amp; guides</span>
+</div>
+<div style="display: flex; gap: 14px; flex-wrap: wrap">
+<a href="student.html" style="font-size: 14px; color: #5B6474">Student dashboard</a>
+<a href="counselor.html" style="font-size: 14px; color: #5B6474">Counselor dashboard</a>
+</div>
+</div>
+</header>
+
+<div style="max-width: 1320px; margin: 0 auto; padding: 28px 24px; display: flex; flex-direction: column; gap: 20px">
+
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 16px">
+<div style="display: flex; flex-direction: column; gap: 6px; max-width: 720px">
+<h1 style="margin: 0; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 30px; letter-spacing: -0.02em">Resources &amp; guides</h1>
+<p style="margin: 0; color: #5B6474; line-height: 1.55">Plain-language guides your counseling office shares with you. Start with the ones marked for your grade, and come back whenever a word or deadline doesn't make sense.</p>
+</div>
+<div style="display: flex; flex-direction: column; gap: 6px; flex: 0 1 320px">
+<label for="search" style="font-size: 14px; font-weight: 600">Search guides</label>
+<input id="search" type="search" placeholder="e.g. FAFSA, deferred, Pell Grant" style="font: inherit; padding: 12px 14px; border: 1px solid #C9D2DC; border-radius: 10px; background: #FFFFFF">
+</div>
+</div>
+
+<div role="group" aria-label="Filter by topic" style="display: flex; flex-wrap: wrap; gap: 8px">
+<sc-for list="{{ cats }}" as="c" hint-placeholder-count="4">
+<button type="button" aria-pressed="{{ c.pressed }}" onClick="{{ c.pick }}" style="{{ c.style }}">{{ c.label }}</button>
+</sc-for>
+</div>
+
+<div style="display: flex; flex-wrap: wrap; gap: 20px; align-items: flex-start">
+
+<nav aria-label="Guides" style="flex: 1 1 320px; min-width: 0; display: flex; flex-direction: column; gap: 10px">
+<sc-for list="{{ list }}" as="g" hint-placeholder-count="8">
+<button type="button" onClick="{{ g.open }}" aria-current="{{ g.current }}" style="{{ g.style }}">
+<span style="display: flex; justify-content: space-between; gap: 8px; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: #5B6474"><span>{{ g.cat }}</span><span>{{ g.mins }} min read</span></span>
+<span style="font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 17px; color: #172033">{{ g.title }}</span>
+<span style="font-size: 14px; color: #5B6474; line-height: 1.45">{{ g.summary }}</span>
+</button>
+</sc-for>
+</nav>
+
+<article style="flex: 2 1 560px; min-width: 0; background: #FFFFFF; border: 1px solid #E3E6EB; border-radius: 18px; padding: 36px 40px; display: flex; flex-direction: column; gap: 22px">
+<div style="display: flex; flex-direction: column; gap: 10px">
+<span style="font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: #0E6E66">{{ cur.cat }} · {{ cur.mins }} min read</span>
+<h2 style="margin: 0; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 30px; letter-spacing: -0.02em; line-height: 1.15">{{ cur.title }}</h2>
+<div style="display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: space-between">
+<span style="font-size: 14px; color: #5B6474">{{ cur.audience }} · by your counseling office</span>
+<button type="button" onClick="{{ share }}" style="{{ shareStyle }}">{{ shareLabel }}</button>
+</div>
+</div>
+
+<sc-for list="{{ cur.sections }}" as="s" hint-placeholder-count="3">
+<section style="display: flex; flex-direction: column; gap: 10px">
+<h3 style="margin: 0; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 20px">{{ s.h }}</h3>
+<sc-for list="{{ s.paras }}" as="p" hint-placeholder-count="1">
+<p style="margin: 0; font-size: 16px; line-height: 1.65; color: #2A3445">{{ p.t }}</p>
+</sc-for>
+<sc-if value="{{ s.hasBullets }}" hint-placeholder-val="{{ false }}">
+<ul style="margin: 0; padding-left: 22px; display: flex; flex-direction: column; gap: 8px; font-size: 16px; line-height: 1.6; color: #2A3445">
+<sc-for list="{{ s.bullets }}" as="b" hint-placeholder-count="3">
+<li><strong style="color: #172033">{{ b.lead }}</strong> {{ b.text }}</li>
+</sc-for>
+</ul>
+</sc-if>
+<sc-if value="{{ s.hasTable }}" hint-placeholder-val="{{ false }}">
+<div style="overflow-x: auto; border: 1px solid #E3E6EB; border-radius: 12px">
+<table style="width: 100%; border-collapse: collapse; font-size: 15px; min-width: 620px">
+<thead><tr style="background: #F6F7F9; text-align: left">
+<sc-for list="{{ s.head }}" as="hc" hint-placeholder-count="4"><th style="padding: 12px 14px; font-weight: 600">{{ hc.t }}</th></sc-for>
+</tr></thead>
+<tbody>
+<sc-for list="{{ s.rows }}" as="r" hint-placeholder-count="5">
+<tr style="border-top: 1px solid #E3E6EB">
+<sc-for list="{{ r.cells }}" as="cell" hint-placeholder-count="4"><td style="{{ cell.style }}">{{ cell.t }}</td></sc-for>
+</tr>
+</sc-for>
+</tbody>
+</table>
+</div>
+</sc-if>
+</section>
+</sc-for>
+
+<div style="background: #F2F7F6; border-radius: 12px; padding: 18px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px">
+<span style="font-size: 15px; color: #2A3445">Still have questions? Your counselor can walk through this with you and your family.</span>
+<a href="student.html" style="font-weight: 600">Book a meeting</a>
+</div>
+<p style="margin: 0; font-size: 13px; color: #5B6474">General guidance. Dates and rules vary by college, so always confirm on each school's website.</p>
+</article>
+
+</div>
+</div>
+</div>
+</script>
+
+<script type="application/json" id="dc-props">{"$preview":{"width":1440,"height":1700}}</script>
+<script src="runtime.js"></script>
+<script>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { cat: 'All', open: 'eaed', shared: {} };
+  }
+  guides() {
+    const P = (t) => ({ t: t });
+    const B = (lead, text) => ({ lead: lead, text: text });
+    return [
+      { id: 'eaed', cat: 'Applying', mins: 4, audience: 'Shared with all seniors', title: 'Early Action vs. Early Decision', summary: 'Both let you apply early. Only one is a promise.',
+        sections: [
+          { h: 'The short version', paras: [P('Both Early Action and Early Decision let you apply early, usually by November 1 or 15, and hear back sooner, often by mid-December. The big difference: Early Decision is a binding promise to attend if you’re admitted. Early Action is not.')] },
+          { h: 'Side by side', head: ['', 'Early Action (EA)', 'Early Decision (ED)', 'Regular Decision (RD)'], rows: [
+            ['Binding?', 'No', 'Yes — if admitted, you attend and withdraw other applications', 'No'],
+            ['How many colleges?', 'As many as offer it', 'Only one', 'As many as you like'],
+            ['Typical deadline', 'Nov 1–15', 'Nov 1–15 (ED II: January)', 'Jan 1–Feb 1'],
+            ['Typical decision', 'Mid-December to February', 'Mid-December', 'March to early April'],
+            ['Compare aid offers?', 'Yes — decide by May 1', 'Not really — you commit before seeing other offers', 'Yes — decide by May 1']
+          ] },
+          { h: 'Watch out for', bullets: [
+            B('Restrictive or Single-Choice Early Action.', 'Not binding, but it limits where else you can apply early. Each college sets its own rules, so read them.'),
+            B('The ED agreement.', 'You, a parent or guardian, and your counselor all sign it.'),
+            B('If ED aid isn’t enough.', 'If the financial aid offer truly isn’t affordable, you can usually ask to be released. Talk to your counselor first.'),
+            B('Deferred is not denied.', 'A deferral moves your application to the regular round, where it gets a second look.')
+          ] },
+          { h: 'Is Early Decision right for you?', paras: [P('ED can make sense only if all three are true:')], bullets: [
+            B('', 'You have a clear first choice you’ve researched carefully.'),
+            B('', 'Your application, including your essay, is strong by November.'),
+            B('', 'Your family has run the college’s net price calculator and the cost works without comparing offers.')
+          ] }
+        ] },
+      { id: 'timeline', cat: 'Applying', mins: 3, audience: 'Shared with all seniors', title: 'Senior year, month by month', summary: 'What to do and when, from September to graduation.',
+        sections: [
+          { h: 'Fall', bullets: [
+            B('September–October:', 'Finalize your list, ask for recommendations, draft your personal essay, and file the FAFSA once your family is ready.'),
+            B('November:', 'Early Action and Early Decision deadlines. CSS Profile for colleges that need it.')
+          ] },
+          { h: 'Winter', bullets: [
+            B('December:', 'Early decisions arrive. Finish Regular Decision applications.'),
+            B('January–February:', 'Most Regular Decision deadlines. Local scholarship season starts.')
+          ] },
+          { h: 'Spring', bullets: [
+            B('March–April:', 'Decisions and aid offers arrive. Compare offers side by side in Pathly.'),
+            B('May 1:', 'National College Decision Day at most colleges. Commit and pay your deposit at one school.'),
+            B('June:', 'Your school sends your final transcript.')
+          ] }
+        ] },
+      { id: 'list', cat: 'Applying', mins: 4, audience: 'Shared with juniors and seniors', title: 'Building a balanced college list', summary: 'Reach, target and likely schools, and why cost counts as fit.',
+        sections: [
+          { h: 'Three kinds of schools', bullets: [
+            B('Reach:', 'Your grades and scores are below what most admitted students have, or the college admits very few applicants. Highly selective colleges are a reach for everyone.'),
+            B('Target:', 'You’re in the middle of the range for admitted students.'),
+            B('Likely:', 'You’re above the range and the college admits most applicants.')
+          ] },
+          { h: 'A healthy list', paras: [P('Most students apply to six to ten colleges, with a few in each group. Every school on your list, including the likely ones, should be a place you’d be happy to go.')] },
+          { h: 'Cost is part of fit', paras: [P('Run each college’s net price calculator, which is on its financial aid website, before you apply. A school you can’t afford isn’t really a likely school.')] }
+        ] },
+      { id: 'recs', cat: 'Applying', mins: 3, audience: 'Shared with juniors and seniors', title: 'Asking for recommendation letters', summary: 'Who to ask, when, and what to give them.',
+        sections: [
+          { h: 'Who to ask', paras: [P('Usually two teachers from core subjects (English, math, science, social studies, world language) who taught you recently, ideally junior year, and who saw you work hard or grow.')] },
+          { h: 'How to ask', bullets: [
+            B('Ask in person first,', 'then send the formal request through Pathly.'),
+            B('Give at least four weeks', 'before your earliest deadline. Many teachers write dozens of letters each fall.'),
+            B('Share your brag sheet', 'and a short note about what you’re proud of in their class.'),
+            B('Waive your right to see the letter', 'when the application asks. Colleges trust confidential letters more.'),
+            B('Say thank you.', 'A handwritten note goes a long way.')
+          ] }
+        ] },
+      { id: 'essay', cat: 'Essays', mins: 6, audience: 'Shared with all seniors', title: 'How to structure your college essay', summary: 'A five-part shape for the 650-word personal essay.',
+        sections: [
+          { h: 'What it’s for', paras: [P('The Common App personal essay is up to 650 words, written to one of seven prompts, including “topic of your choice.” Colleges already have your grades and activities. This is where they hear your voice and learn how you think.')] },
+          { h: 'A structure that works', bullets: [
+            B('1. Open in a moment.', 'Start in a specific scene, not a summary. “Every Tuesday we took the 7:40 bus” beats “I have always loved helping people.”'),
+            B('2. Give context.', 'What was happening, and why did it matter to you?'),
+            B('3. The turn.', 'A challenge, a change or a realization: the moment something shifted.'),
+            B('4. Reflect.', 'What did you learn about yourself? This is the most important part, and it’s usually the thinnest in early drafts.'),
+            B('5. Look forward.', 'Briefly connect to who you are now and what you want next, without listing achievements.')
+          ] },
+          { h: 'Common mistakes', bullets: [
+            B('', 'Turning the essay into your resume in paragraph form.'),
+            B('', 'Endings like “In conclusion…” or “This taught me many valuable lessons.”'),
+            B('', 'Writing what you think admissions wants to hear instead of what’s true for you.'),
+            B('', 'Letting other people’s edits replace your voice.')
+          ] },
+          { h: 'The process', paras: [P('Brainstorm three possible topics and pick the one you could tell best. Write a messy first draft, then upload it to Pathly for your counselor’s comments. Plan on at least three drafts, and read the final one out loud before you submit.')] }
+        ] },
+      { id: 'whyus', cat: 'Essays', mins: 3, audience: 'Shared with all seniors', title: 'Writing “Why us?” supplements', summary: 'Show you know the college, and that it fits you.',
+        sections: [
+          { h: 'What colleges are asking', paras: [P('A “Why us?” essay asks two things: what do you know about this college, and why does it fit you specifically?')] },
+          { h: 'How to answer', bullets: [
+            B('Name specifics:', 'a program, class, research opportunity, club or tradition.'),
+            B('Connect each one to you:', 'something you’ve already done or want to keep doing.'),
+            B('Skip anything true of every college,', 'such as location, “great academics” or rankings.'),
+            B('Reuse carefully.', 'Never leave another college’s name in a recycled essay.')
+          ] }
+        ] },
+      { id: 'fafsa', cat: 'Paying for college', mins: 6, audience: 'Shared with seniors and families', title: 'The FAFSA, step by step (2027–28)', summary: 'The free form that unlocks federal, state and college aid.',
+        sections: [
+          { h: 'What it is', paras: [P('The Free Application for Federal Student Aid (FAFSA) is how you qualify for federal grants like the Pell Grant, federal student loans and work-study. Most states and colleges use it for their own aid too. It’s free: never pay a website to file it. The 2027–28 form, for students starting college in fall 2027, is already open at StudentAid.gov.')] },
+          { h: 'Before you start', bullets: [
+            B('StudentAid.gov accounts.', 'You and each contributor (usually your parents) need an account, also called an FSA ID. Create them a few days ahead, because verification can take time. Contributors without a Social Security number can still create one.'),
+            B('2025 tax information.', 'The FAFSA uses tax info from two years earlier, and it’s pulled directly from the IRS once each person gives consent.'),
+            B('Your college list.', 'You can send the FAFSA to up to 20 colleges.')
+          ] },
+          { h: 'Filling it out', bullets: [
+            B('1.', 'You start the form and invite your contributors by email.'),
+            B('2.', 'Each contributor logs in, gives consent to share tax information, and completes their section.'),
+            B('3.', 'You add colleges, review and sign.'),
+            B('4.', 'You get a FAFSA Submission Summary showing your Student Aid Index (SAI), the number colleges use to figure out your aid.')
+          ] },
+          { h: 'Deadlines', paras: [
+            P('The federal deadline is June 30, 2028, but states and colleges set much earlier ones, and some aid runs out. File as soon as your family is ready.'),
+            P('Massachusetts students: check mass.edu/osfa for the state aid deadline. For 2026–27 it was June 30, 2026. Some private colleges also require the CSS Profile.')
+          ] }
+        ] },
+      { id: 'css', cat: 'Paying for college', mins: 3, audience: 'Shared with seniors and families', title: 'CSS Profile basics', summary: 'The second aid form some private colleges require.',
+        sections: [
+          { h: 'What it is', paras: [P('The CSS Profile is a financial aid form run by the College Board. A few hundred colleges, mostly private, use it to award their own grants. It asks for more detail than the FAFSA.')] },
+          { h: 'What to know', bullets: [
+            B('Check each college.', 'Its financial aid page says whether the Profile is required and when. Deadlines are often in November for early applicants.'),
+            B('There’s a fee per college,', 'but many students get it waived automatically based on family income.'),
+            B('Separated or divorced parents:', 'some colleges also ask for the noncustodial parent’s information.')
+          ] }
+        ] },
+      { id: 'scholar', cat: 'Paying for college', mins: 5, audience: 'Shared with juniors and seniors', title: 'Finding (and winning) scholarships', summary: 'Where the money is, and how to avoid scams.',
+        sections: [
+          { h: 'Three kinds of scholarships', bullets: [
+            B('From colleges:', 'the biggest source. Many merit scholarships are awarded automatically when you apply.'),
+            B('Local:', 'community groups, employers, credit unions and your school’s own list. Fewer applicants means better odds.'),
+            B('National:', 'large programs with many applicants. Worth a few applications, not all your time.')
+          ] },
+          { h: 'Where to look', paras: [P('Start with your counseling office’s local scholarship list in Pathly, each college’s financial aid website, and free search tools such as College Board’s BigFuture. Many local deadlines fall between February and April of senior year.')] },
+          { h: 'Tips', bullets: [
+            B('Never pay', 'to apply for or “find” scholarships. That’s a scam.'),
+            B('Reuse your writing.', 'Adapt essays you’ve already written.'),
+            B('Track deadlines', 'in your Pathly calendar like any application.'),
+            B('Ask each aid office', 'how an outside scholarship affects your aid package.')
+          ] }
+        ] },
+      { id: 'offer', cat: 'Paying for college', mins: 4, audience: 'Shared with seniors and families', title: 'Reading your financial aid offer', summary: 'Free money, loans and work-study, and how to compare.',
+        sections: [
+          { h: 'Three kinds of aid', bullets: [
+            B('Grants and scholarships', 'are free money you don’t pay back.'),
+            B('Loans', 'are borrowed and paid back with interest. Subsidized federal loans don’t build interest while you’re in school; unsubsidized ones do. Parent PLUS loans are your parents’ debt, not yours.'),
+            B('Work-study', 'is money you can earn at a campus job. It isn’t taken off your bill up front.')
+          ] },
+          { h: 'Find the real price', paras: [P('Subtract only grants and scholarships from the total cost of attendance. That’s your net cost, and it’s the fairest way to compare colleges. Use the Compare offers screen in Pathly to line them up.')] },
+          { h: 'You can ask for more', paras: [P('If your family’s finances changed, or the offer isn’t enough, contact the aid office and ask for a review, sometimes called an appeal. Your counselor can help you write the request.')] }
+        ] }
+    ];
+  }
+  renderVals() {
+    const st = this.state || {};
+    const cat = st.cat || 'All';
+    const openId = st.open || 'eaed';
+    const shared = st.shared || {};
+    const all = this.guides();
+    const catNames = ['All', 'Applying', 'Essays', 'Paying for college'];
+    const cats = catNames.map((c) => {
+      const on = c === cat;
+      return { label: c, pressed: on ? 'true' : 'false', pick: () => this.setState({ cat: c }),
+        style: 'font:inherit;font-size:14px;font-weight:600;min-height:44px;padding:8px 16px;border-radius:999px;cursor:pointer;' + (on ? 'background:#172033;color:#FFFFFF;border:1px solid #172033' : 'background:#FFFFFF;color:#3B4555;border:1px solid #C9D2DC') };
+    });
+    const list = all.filter((g) => cat === 'All' || g.cat === cat).map((g) => {
+      const on = g.id === openId;
+      return { title: g.title, summary: g.summary, cat: g.cat, mins: g.mins, current: on ? 'true' : 'false',
+        open: () => this.setState({ open: g.id }),
+        style: 'font:inherit;text-align:left;display:flex;flex-direction:column;gap:6px;padding:16px 18px;border-radius:14px;cursor:pointer;width:100%;' + (on ? 'background:#E3F1EF;border:2px solid #0E6E66' : 'background:#FFFFFF;border:2px solid #E3E6EB') };
+    });
+    const g = all.find((x) => x.id === openId) || all[0];
+    const cur = {
+      title: g.title, cat: g.cat, mins: g.mins, audience: g.audience,
+      sections: g.sections.map((s) => ({
+        h: s.h,
+        paras: s.paras || [],
+        bullets: s.bullets || [],
+        hasBullets: !!(s.bullets && s.bullets.length),
+        hasTable: !!s.rows,
+        head: (s.head || []).map((t) => ({ t: t })),
+        rows: (s.rows || []).map((r) => ({ cells: r.map((t, i) => ({ t: t, style: 'padding:12px 14px;vertical-align:top;line-height:1.45;' + (i === 0 ? 'font-weight:600;color:#172033' : 'color:#2A3445') })) }))
+      }))
+    };
+    const isShared = !!shared[g.id];
+    return {
+      cats: cats, list: list, cur: cur,
+      shareLabel: isShared ? 'Shared with students' : 'Share with students',
+      shareStyle: 'font:inherit;font-size:14px;font-weight:600;min-height:44px;padding:10px 16px;border-radius:10px;cursor:pointer;' + (isShared ? 'background:#E6F4EA;color:#1E6B3A;border:1px solid #A9D8B8' : 'background:#FFFFFF;color:#0E6E66;border:1px solid #0E6E66'),
+      share: () => { const n = Object.assign({}, shared); n[g.id] = !isShared; this.setState({ shared: n }); }
+    };
+  }
+}
+</script>
+</body>
+</html>
